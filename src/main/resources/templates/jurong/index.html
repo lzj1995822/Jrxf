@@ -1,0 +1,729 @@
+﻿﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="IE=9" />
+<title>句容先锋网</title>
+<link type="text/css" rel="stylesheet" href="styles/css.css" />
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.js" type="text/javascript"></script>
+<script src="../jvrong/Public/Plugin/style/js/ractive-legacy.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+var Speed_1 = 10; //速度(毫秒)
+var Space_1 = 20; //每次移动(px)
+var PageWidth_1 = 117 * 6; //翻页宽度
+var interval_1 = 5000; //翻页间隔时间
+var fill_1 = 0; //整体移位
+var MoveLock_1 = false;
+var MoveTimeObj_1;
+var MoveWay_1="right";
+var Comp_1 = 0;
+var AutoPlayObj_1=null;
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}}
+function AutoPlay_1(){clearInterval(AutoPlayObj_1);AutoPlayObj_1=setInterval('ISL_GoDown_1();ISL_StopDown_1();',interval_1)}
+function ISL_GoUp_1(){if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="left";MoveTimeObj_1=setInterval('ISL_ScrUp_1();',Speed_1);}
+function ISL_StopUp_1(){if(MoveWay_1 == "right"){return};clearInterval(MoveTimeObj_1);if((GetObj('ISL_Cont_1').scrollLeft-fill_1)%PageWidth_1!=0){Comp_1=fill_1-(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1);CompScr_1()}else{MoveLock_1=false}
+AutoPlay_1()}
+function ISL_ScrUp_1(){if(GetObj('ISL_Cont_1').scrollLeft<=0){GetObj('ISL_Cont_1').scrollLeft=GetObj('ISL_Cont_1').scrollLeft+GetObj('List1_1').offsetWidth}
+GetObj('ISL_Cont_1').scrollLeft-=Space_1}
+function ISL_GoDown_1(){clearInterval(MoveTimeObj_1);if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="right";ISL_ScrDown_1();MoveTimeObj_1=setInterval('ISL_ScrDown_1()',Speed_1)}
+function ISL_StopDown_1(){if(MoveWay_1 == "left"){return};clearInterval(MoveTimeObj_1);if(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1-(fill_1>=0?fill_1:fill_1+1)!=0){Comp_1=PageWidth_1-GetObj('ISL_Cont_1').scrollLeft%PageWidth_1+fill_1;CompScr_1()}else{MoveLock_1=false}
+AutoPlay_1()}
+function ISL_ScrDown_1(){if(GetObj('ISL_Cont_1').scrollLeft>=GetObj('List1_1').scrollWidth){GetObj('ISL_Cont_1').scrollLeft=GetObj('ISL_Cont_1').scrollLeft-GetObj('List1_1').scrollWidth}
+GetObj('ISL_Cont_1').scrollLeft+=Space_1}
+function CompScr_1(){if(Comp_1==0){MoveLock_1=false;return}
+var num,TempSpeed=Speed_1,TempSpace=Space_1;if(Math.abs(Comp_1)<PageWidth_1/2){TempSpace=Math.round(Math.abs(Comp_1/Space_1));if(TempSpace<1){TempSpace=1}}
+if(Comp_1<0){if(Comp_1<-TempSpace){Comp_1+=TempSpace;num=TempSpace}else{num=-Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollLeft-=num;setTimeout('CompScr_1()',TempSpeed)}else{if(Comp_1>TempSpace){Comp_1-=TempSpace;num=TempSpace}else{num=Comp_1;Comp_1=0}
+GetObj('ISL_Cont_1').scrollLeft+=num;setTimeout('CompScr_1()',TempSpeed)}}
+function picrun_ini(){
+GetObj("List2_1").innerHTML=GetObj("List1_1").innerHTML;
+GetObj('ISL_Cont_1').scrollLeft=fill_1>=0?fill_1:GetObj('List1_1').scrollWidth-Math.abs(fill_1);
+GetObj("ISL_Cont_1").onmouseover=function(){clearInterval(AutoPlayObj_1)}
+GetObj("ISL_Cont_1").onmouseout=function(){AutoPlay_1()}
+AutoPlay_1();
+}
+</script>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+<div class="dingbu">
+      <div class="body_center">
+           <div class="din_left">
+                <div><a href="http://www.12371.cn/" target="_blank"><img src="images/dingbu.jpg" width="150" height="60"></a></div>
+           </div>
+           <div class="din_right">
+                <ul>
+                    <li><a href="http://news.12371.cn/2017/07/10/ARTI1499637714348123.shtml">习近平治国理政思想的理论贡献</a></li>
+                    <li><a href="http://tougao.12371.cn/liebiao.php?fid=130">学习研讨</a>&nbsp;|&nbsp;<a href="http://tougao.12371.cn/gaojian.php?tid=702093">不忘初心 做“慎终如始”合格党员</a></li>
+                    <li><a href="http://tougao.12371.cn/gaojian.php?tid=701975">以“钉钉子”精神践行“两学一做”</a></li>
+                    <li><a href="http://www.12371.cn/special/lxyzby/">榜样</a>&nbsp;|&nbsp;<a href="http://biaozhang.12371.cn/2017/07/10/ARTI1499635501105908.shtml">安徽安庆党员带头巡堤</a></li>
+                    <li><a href="http://www.12371.cn/special/zmjcgb/">最美基层干部</a>&nbsp;|&nbsp;<a href="http://biaozhang.12371.cn/2017/07/10/ARTI1499636944187964.shtml">潘昌赋:做好上访群众的"顺气筒"</a></li>
+                    <li><a href="http://fuwu.12371.cn/rjxz/">党组织党员信息采集表下载</a>&nbsp;&nbsp;<a href="#">工作指南</a></li>
+                </ul>
+           </div>
+           <div class="clear"></div>
+      </div>   
+</div>
+<div style="background:url(images/djw_bj.jpg) no-repeat;">
+<div sizset="0" sizcache="23" style="BORDER-BOTTOM: #113863 3px solid; BACKGROUND-COLOR: #f6b84b;text-align:center"><div sizset="0" sizcache="23" style="HEIGHT: 60px; WIDTH: 1000px; MARGIN: 0px auto">
+    <div style="display: block;">
+        <img src="images/djw_bj.jpg" width="1000" height="330" 5border="0" usemap="#Map" id="map_fld" class="mapbg" style="display: none;">
+        <map name="Map" id="Map">
+            <area shape="rect" coords="535,108,587,125" href="http://www.zjga.gov.cn/jrsj/" target="_blank">
+            <area shape="rect" coords="631,110,683,131" href="http://www.jrmh.cn/sonweb/jrjtj/" target="_blank">
+            <area shape="rect" coords="723,109,773,128" href="http://www.jrxf.gov.cn/sonweb/zjjdw/" target="_blank">
+            <area shape="rect" coords="811,110,859,127" href="http://www.jre.net.cn/allStation/jrjy/www_jre_net_cn/index.html?domainName=www.jre.net.cn/" target="_blank">
+            <area shape="rect" coords="538,135,584,155" href="http://www.jrxf.gov.cn/sonweb/wsjdw/" target="_blank">
+            <area shape="rect" coords="634,138,678,154" href="http://www.jsjrny.com/" target="_blank">
+            <area shape="rect" coords="726,137,772,158" href="http://www.jrslnj.gov.cn/" target="_blank">
+            <area shape="rect" coords="809,136,861,156" href="http://www.jrmz.gov.cn/" target="_blank">
+            <area shape="rect" coords="536,166,585,184" href="http://www.jsjrcz.gov.cn/" target="_blank">
+            <area shape="rect" coords="539,254,602,269" href="http://www.chd-jr.com/" target="_blank">
+            <area shape="rect" coords="635,166,682,184" href="http://www.jrxf.gov.cn/sonweb/wgtyj/" target="_blank">
+            <area shape="rect" coords="725,166,771,185" href="http://www.jrfgw.gov.cn/" target="_blank">
+            <area shape="rect" coords="810,164,862,185" href="http://www.jrhrss.gov.cn/" target="_blank">
+            <area shape="rect" coords="537,194,585,213" href="http://www.jrcg.cn/" target="_blank">
+            <area shape="rect" coords="636,194,695,213" href="http://www.jrlsj.gov.cn/" target="_blank">
+
+            <area shape="rect" coords="538,223,598,245" href="http://www.jrxf.gov.cn/sonweb/gdgsdw/" target="_blank">
+            <area shape="rect" coords="635,224,695,242" href="http://www.jrcoop.com/" target="_blank">
+            <area shape="rect" coords="725,226,774,242" href="http://www.jrnsh.net/" target="_blank">
+            <area shape="rect" coords="807,225,882,243" href="http://www.jrgzw.cn/" target="_blank">
+            <area shape="rect" coords="635,252,738,272" href="http://www.jrfgw.gov.cn/" target="_blank">
+            <area shape="rect" coords="180,65,253,145" href="goto.asp?topicid=385" target="_blank">
+            <area shape="rect" coords="107,156,194,205" href="goto.asp?topicid=383" target="_blank">
+            <area shape="rect" coords="199,162,279,196" href="goto.asp?topicid=381" target="_blank">
+            <area shape="rect" coords="258,104,306,129" href="goto.asp?topicid=432" target="_blank">
+            <area shape="rect" coords="245,202,303,251" href="goto.asp?topicid=389" target="_blank">
+
+            <area shape="rect" coords="182,216,222,236" href="goto.asp?topicid=387" target="_blank">
+            <area shape="rect" coords="347,148,385,166" href="goto.asp?topicid=392" target="_blank">
+            <area shape="rect" coords="285,148,320,162" href="goto.asp?topicid=368" target="_blank">
+            <area shape="rect" coords="284,181,327,192" href="http://www.jrcm.gov.cn/" target="_blank">
+
+            <area shape="rect" coords="305,208,352,259" href="goto.asp?topicid=379" target="_blank">
+            <area shape="rect" coords="354,198,412,245" href="goto.asp?topicid=377" target="_blank">
+            <area shape="rect" coords="411,141,468,204" href="goto.asp?topicid=375" target="_blank">
+            <area shape="rect" coords="422,84,476,134" href="goto.asp?topicid=373" target="_blank">
+        </map>
+    </div>
+    <h1 style="FLOAT: left; MARGIN: 8px 0px 0px"><img border="0" src="images/logo1.jpg"></h1>
+    <p sizset="0" sizcache="23" style="FLOAT: right; MARGIN: 35px 10px 0px 0px"><a target="_blank" href="http://dwlm.12371.cn" style="FONT-SIZE: 12px; TEXT-DECORATION: none; COLOR: #000">返回联盟首页</a>&nbsp;<span style="COLOR: #1e6ead">|</span>&nbsp;<a target="_blank" href="http://www.12371.cn/" style="FONT-SIZE: 12px; TEXT-DECORATION: none; COLOR: #000">共产党员网</a></p></div>
+</div>
+</div>
+
+
+<!--<div style="background:url(images/djw_bj.jpg) no-repeat;">-->
+    <!--<div sizset="0" sizcache="23" style=" WIDTH: 1000px; MARGIN: 0px auto">-->
+        <!--<div  style="display: block;">-->
+            <!--<img src="images/jl.png" width="1000" height="330" 5border="0" usemap="#Map" id="map_fld" class="mapbg">-->
+            <!--&lt;!&ndash;<map name="Map" id="Map">&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="circle" coords="95,195,47" href="http://www.jrxf.gov.cn/sonweb/twzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="circle" coords="187,103,43" href="http://www.jrxf.gov.cn/sonweb/gzzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="242,69,299,113" href="http://www.jrxf.gov.cn/sonweb/csfjq/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="121,233,209,278" href="http://www.jrxf.gov.cn/sonweb/msfjq/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="215,208,290,266" href="http://www.jrxf.gov.cn/sonweb/mszdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="299,224,361,318" href="http://www.jrxf.gov.cn/sonweb/btzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="366,211,438,275" href="http://www.jrxf.gov.cn/sonweb/bczdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="443,143,533,221" href="http://www.jrxf.gov.cn/sonweb/xszdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="331,120,430,188" href="http://www.jrxf.gov.cn/sonweb/kfqdgw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="461,50,532,140" href="http://www.jrxf.gov.cn/sonweb/bhzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="261,118,325,165" href="http://www.jrxf.gov.cn/sonweb/hyzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="257,168,331,207" href="http://www.jrcm.gov.cn/" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="167,152,254,203" href="http://www.jrxf.gov.cn/sonweb/hbzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="585,95,637,132" href="http://www.jrxf.gov.cn/sonweb/hyzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="678,95,750,132" href="http://www.jrxf.gov.cn/sonweb/kfqdgw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="789,92,866,134" href="http://www.jrcm.gov.cn/" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="890,93,949,131" href="http://www.jrxf.gov.cn/sonweb/twzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="587,146,640,185" href="http://www.jrxf.gov.cn/sonweb/hbzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="676,146,735,188" href="http://www.jrxf.gov.cn/sonweb/gzzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="787,147,850,181" href="http://www.jrxf.gov.cn/sonweb/csfjq/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="890,147,951,184" href="http://www.jrxf.gov.cn/sonweb/mszdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="586,198,637,239" href="http://www.jrxf.gov.cn/sonweb/msfjq/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="678,197,735,235" href="http://www.jrxf.gov.cn/sonweb/btzdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="782,198,835,235" href="http://www.jrxf.gov.cn/sonweb/bczdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="890,199,952,234" href="http://www.jrxf.gov.cn/sonweb/xszdw/index.asp" target="_blank" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<area shape="rect" coords="585,247,639,288" href="http://www.jrxf.gov.cn/sonweb/bhzdw/index.asp" target="_blank" />&ndash;&gt;-->
+              <!--&lt;!&ndash;</map>&ndash;&gt;-->
+<!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="mapupbtn" id="mapctr"></div>
+    
+<script type="text/javascript">
+$("#mapctr").click(function(){
+            $("#map_fld").slideToggle("slow");
+            $(this).toggleClass("mapupbtn");
+            $(this).toggleClass("mapdownbtn");
+        });
+</script>
+<div class="body" id="app" style="background-image: url(./images/bg.png);    background-repeat: round;    background-color: #eeeeee;">
+     <div class="head">
+          <div class="top body_center">
+               <div class="logo"><img src="images/logo_2.png" style="padding-left: 14%;"/></div>
+               <div class="tianqi"><iframe style="padding-left: 68px;" width="305" scrolling="no" height="30" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=1&icon=1&py=jurong&wind=1&num=1&site=14"></iframe>
+                   <p class="clearfix2">
+                       <a href="index.html">网站首页</a>
+                       <a href="newslist.html?ffl=5&c=zsjs">自身建设</a>
+                       <a href="newslist.html?ffl=6&c=djyj">党建研究</a>
+                       <a href="newslist.html?ffl=7&c=gbgz">干部工作</a>
+                       <a href="gnewslist.html?ffl=8&c=jczz">基层组织</a>
+                       <a href="newslist.html?ffl=9&c=dygl">党员管理</a>
+                       <a href="newslist.html?ffl=10&c=rcgz">人才工作</a>
+                       <a href="newslist.html?ffl=11&c=ycjy">远程教育</a>
+                       <a href="newslist.html?ffl=12&c=gdjy">各地经验</a><br>
+                   </p>
+
+
+               </div>
+               <!-- <div class="hidden"><input name="" class="ssk" type="text"><input name="" type="button" class="ssan" value="搜索"></div> -->
+
+          </div>
+
+          <!--<div class="nav">-->
+               <!--<ul class="body_center">-->
+                   <!--<li class="index"><a href="index.html?c=index">网站首页</a></li>-->
+                   <!--<li><a class="zsjs" href="newslist.html?ffl=5&c=zsjs">自身建设</a></li>-->
+                   <!--<li><a class="djyj" href="newslist.html?ffl=6&c=djyj">党建研究</a></li>-->
+                   <!--<li><a class="gbgz" href='newslist.html?ffl=7&c=gbgz'>干部工作</a></li>-->
+                   <!--<li><a class="jczz" href='newslist.html?ffl=8&c=jczz'>基层组织</a></li>-->
+                   <!--<li><a class="dygl" href='newslist.html?ffl=9&c=dygl'>党员管理</a></li>-->
+                   <!--<li><a class="rcgz" href='newslist.html?ffl=10&c=rcgz'>人才工作</a></li>-->
+                   <!--<li><a class="ycjy" href='newslist.html?ffl=11&c=ycjy'>远程教育</a></li>-->
+               <!--</ul>-->
+          <!--</div>-->
+
+		  <!--先用图片代替，这边需要做成FLASH，PSD图片在陈国明那，要求在陈国明那-->
+
+      <style>
+        .c-c{position:relative; left:50%; top: 50%; transform: translate(-50%,-50%); -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%); -o-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);}
+      </style>
+		    <!--<div style="width:100%; margin:0 auto; position:relative;    max-width: 1050px;height:303px ;">-->
+                <!--<img src="images/banner.png" style="width:100%;    height: 100%;" />-->
+                <!--<div style="position:absolute; width:40%; height:35%; top:10%; right:30%;">-->
+                    <!--<img id="font1" class="c-c" style="width:0; position:absolute;" src="images/font1.png" alt="" />-->
+                <!--</div>-->
+                <!--<div style="position:absolute; width:40%; height:35%; top:35%; right:15%; ">-->
+                    <!--<img id="font2" class="c-c" style="width:0; position:absolute;" src="images/font2.png" alt="" />-->
+                <!--</div>-->
+            <!--</div>-->
+      <script>
+        $('#font1').delay(500).animate({
+            width: '400',
+        }, 2000, 'easeOutExpo');
+
+
+        $('#font2').delay(2000).animate({
+            width: '500',
+        }, 2000, 'easeOutExpo');
+      </script>
+     </div>
+     <div class="main">
+         <div class="right_" style="visibility:hidden">
+             <img src="./images/ewm.png" alt="" style="width: 54%; float: right;">
+         </div>
+          <div class="body_center">
+               <div class="middle" style="background: white;">
+                    <div class="left">
+                         <div class="tuwen">
+                              <div class="tu">
+                                   <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/tpxx.png" /></div>
+                                   <div class="float-left qiehuan">
+                                        <div id="KinSlideshow"  style="visibility:hidden;">
+                                            <a v-for="item in lbtp" :href="item.lj" target="_blank"><img :src="url + '/file/'+ item.tp" :alt="item.mc" width="370" height="255" /></a>
+                                       </div>
+                                   </div>
+                              </div>
+                              <div class="wen1">
+                                   <div class="biaoti1" style="border-bottom:solid 1px #b9070d;"><img src="images/bddt.png" /><span class="more"><a href="newslist.html?ffl=3"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen">
+                                       <ul id="lawContainer" v-cloak>
+                                           <li v-for="item in bddt"><a :href="'article.html?id=' + item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                       </ul>
+                                   </div>
+                              </div>
+                              <div class="clear"></div>
+                         </div>
+                         <div class="guanggao"><a href="http://lxyz.12371.cn/" target="_blank" style="color: transparent"><img src="images/lxyz.png" width="730" height="80" style="    width: 100%;    margin-top: -15px;" /></a></div>
+                         <div class="zishen_dangjian">
+                              <div class="tu2">
+								   <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/zajs.png" /><span class="more"><a href="newslist.html?ffl=5&c=zsjs"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen1" id="zsjs" v-cloak>
+                                       <template v-for="(item,index) in zsjs">
+                                           <div v-if="index == 0" class="pic01">
+                                               <div class="pic01_pic"><a :href="'article.html?id='+ item.id" target="_blank"><img src="http://www.jrxf.gov.cn/file/11542177557579.jpg" width="140" height="86" border="0"></a></div>
+                                               <div class="pic01_content"><a :href="'article.html?id='+item.id" target="_blank"><strong>{{item.bt}}</strong><br/>[详细]</a></div>
+                                           </div>
+                                           <ul v-else>
+                                               <li><a :href="'article.html?id='+item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                           </ul>
+                                       </template>
+                                 </div>
+                              </div>
+                              <div class="wen2">
+								   <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/djyj.png" /><span class="more"><a href="newslist.html?ffl=6&c=djyj"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen1" id="djyj" v-cloak>
+                                       <template v-for="(item,index) in djyj">
+                                           <div v-if="index == 0" class="pic01">
+                                               <div class="pic01_pic"><a :href="'article.html?id='+ item.id" target="_blank"><img :src="url + '/file/' + item.fm" width="140" height="86" border="0"></a></div>
+                                               <div class="pic01_content"><a :href="'article.html?id='+item.id" target="_blank"><strong>{{item.bt}}</strong><br/>[详细]</a></div>
+                                           </div>
+                                           <ul v-else>
+                                               <li><a :href="'article.html?id='+item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                           </ul>
+                                       </template>
+                                   </div>
+                              </div>
+                              <div class="clear"></div>
+                         </div>
+                         <div class="zishen_dangjian">
+                              <div class="tu2">
+								   <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/gbgz.png" /><span class="more"><a href="newslist.html?ffl=7&c=gbgz"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen1" id="gbgz" v-cloak>
+                                       <template v-for="(item,index) in gbgz">
+                                           <div v-if="index == 0" class="pic01">
+                                               <div class="pic01_pic"><a :href="'article.html?id='+ item.id" target="_blank"><img :src="url + '/file/' + item.fm" width="140" height="86" border="0"></a></div>
+                                               <div class="pic01_content"><a :href="'article.html?id='+item.id" target="_blank"><strong>{{item.bt}}</strong><br/>[详细]</a></div>
+                                           </div>
+                                           <ul v-else>
+                                               <li><a :href="'article.html?id='+item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                           </ul>
+                                       </template>
+                                 </div>
+                              </div>
+                              <div class="wen2">
+								   <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/jczz.png" /><span class="more"><a href="newslist.html?ffl=8&c=jczz"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen1" id="jczz"  v-cloak>
+                                       <template v-for="(item,index) in jczz">
+                                           <div v-if="index == 0" class="pic01">
+                                               <div class="pic01_pic"><a :href="'article.html?id='+ item.id" target="_blank"><img :src="url + '/file/' + item.fm" width="140" height="86" border="0"></a></div>
+                                               <div class="pic01_content"><a :href="'article.html?id='+item.id" target="_blank"><strong>{{item.bt}}</strong><br/>[详细]</a></div>
+                                           </div>
+                                           <ul v-else>
+                                               <li><a :href="'article.html?id='+item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                           </ul>
+                                       </template>
+                                   </div>
+                              </div>
+                              <div class="clear"></div>
+                         </div>
+                         <div class="productshow">
+                            <div style="float:left;width:44px;height:155px;"><img src="images/qglm.jpg" /></div>
+                            <div class="blk_18"> 								 
+                                 <a class="LeftBotton" onMouseDown="ISL_GoUp_1()" onMouseUp="ISL_StopUp_1()" onMouseOut="ISL_StopUp_1()" href="javascript:void(0);" target="_self"></a>
+                                 <div class="pcont" id="ISL_Cont_1">
+                                      <div class="ScrCont">
+                                           <div id="List1_1">
+                                    <!-- piclist begin -->
+                                    <a target="_blank" class="pl" href="http://www.qstheory.cn/"  target="_blank" style="color: transparent"><img src="http://images.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575121661455.jpg" alt="" width="90" height="120"/>《求是》</a>
+                                    <a target="_blank"  class="pl"href="http://www.ropiw.com.cn/"  target="_blank" style="color: transparent"> <img src="http://images.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575116079353.jpg" alt="" width="90" height="120"/>《思想政治工作研究》</a>
+                                    <a target="_blank"  class="pl" href="http://www.zgg.org.cn/"  target="_blank" style="color: transparent"><img src="http://images.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575113480499.jpg" alt=""width="90" height="120"/>《紫光阁》</a>
+                                    <a target="_blank"  class="pl" href="http://www.bjqx.org.cn/qxweb/"  target="_blank" style="color: transparent"><img src="http://images1.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575112207411.jpg" alt="" width="90" height="120"/>《前线》</a>
+                                    <a target="_blank"  class="pl" href="http://cpc.people.com.cn/GB/68742/123889/"  target="_blank" style="color: transparent"><img src="http://images1.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575106067572.jpg" alt="" width="90" height="120"/>《党的生活》</a>
+                                    <a target="_blank"  class="pl" href="http://www.qunzh.com/index.html"  target="_blank" style="color: transparent"><img src="http://images.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575104601959.jpg" alt="" width="90" height="120"/>《群众》</a>
+                                    <a target="_blank"  class="pl" href="http://www.qstheory.cn/hqwg/"  target="_blank" style="color: transparent"><img src="http://images.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575118756448.jpg" alt="" width="90" height="120"/>《红旗文稿》</a>
+                                    <a target="_blank"  class="pl" href="http://www.ssbgzzs.com/"  target="_blank" style="color: transparent"><img src="http://images1.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575117397204.jpg" alt="" width="90" height="120"/>《时事报告》</a>
+                                    <a target="_blank"  class="pl" href="http://www.bjqx.org.cn/qxweb/"  target="_blank" style="color: transparent"><img src="http://images1.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160426575112207411.jpg" alt="" width="90" height="120"/>《前线》</a>
+                                    <a target="_blank"  class="pl" href="http://www.hebgcdy.com/"  target="_blank" style="color: transparent"><img src="http://images1.wenming.cn/web_djw/djw2016sy/djw2016wkztl/wkztl2016dklm/201604/W020160921406312754485.png" alt="" width="90" height="120"/>《共产党员》</a>
+                                    <a target="_blank"  class="pl"href="http://cpc.people.com.cn/GB/68742/123889/" style="color: transparent" target="_blank"> <img src="images/s2.jpg" alt="" width="90" height="120"/>《党的生活》</a>
+                                    <!-- piclist end -->
+                                  </div>
+                                           <div id="List2_1"></div>
+                                      </div>
+                                 </div>
+                                 <a class="RightBotton" onMouseDown="ISL_GoDown_1()" onMouseUp="ISL_StopDown_1()" onMouseOut="ISL_StopDown_1()" href="javascript:void(0);" target="_self"></a>
+                            </div>
+                      </div>
+                         <div class="zishen_dangjian">
+                              <div class="tu2">
+								   <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/dygl.png" /><span class="more"><a href="newslist.html?ffl=9&c=dygl"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen1" id="lawContainer2" v-cloak>
+                                        <template v-for="(item,index) in dygl">
+                                            <div v-if="index == 0" class="pic01">
+                                                <div class="pic01_pic"><a :href="'article.html?id='+ item.id" target="_blank"><img :src="url + '/file/' + item.fm" width="140" height="86" border="0"></a></div>
+                                                <div class="pic01_content"><a :href="'article.html?id='+item.id" target="_blank"><strong>{{item.bt}}</strong><br/>[详细]</a></div>
+                                            </div>
+                                            <ul v-else>
+                                                <li><a :href="'article.html?id='+item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                            </ul>
+                                        </template>
+                                   </div>
+                              </div>
+                              <div class="wen2">
+								   <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/rcgz.png" /><span class="more"><a href="newslist.html?ffl=10&c=rcgz"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen1" id="rcgz" v-cloak>
+                                       <template v-for="(item,index) in rcgz">
+                                           <div v-if="index == 0" class="pic01">
+                                               <div class="pic01_pic"><a :href="'article.html?id='+ item.id" target="_blank"><img :src="url + '/file/' + item.fm" width="140" height="86" border="0"></a></div>
+                                               <div class="pic01_content"><a :href="'article.html?id='+item.id" target="_blank"><strong>{{item.bt}}</strong><br/>[详细]</a></div>
+                                           </div>
+                                           <ul v-else>
+                                               <li><a :href="'article.html?id='+item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                           </ul>
+                                       </template>
+                                   </div>
+                              </div>
+                              <div class="clear"></div>
+                         </div>
+                         <div class="zishen_dangjian">
+							<div class="tu2">
+								 <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/ycjy.png" /><span class="more"><a href="newslist.html?ffl=11&c=ycjy"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen1" id="ycjy" v-cloak>
+                                       <template v-for="(item,index) in ycjy">
+                                           <div v-if="index == 0" class="pic01">
+                                               <div class="pic01_pic"><a :href="'article.html?id='+ item.id" target="_blank"><img :src="url + '/file/' + item.fm" width="140" height="86" border="0"></a></div>
+                                               <div class="pic01_content"><a :href="'article.html?id='+item.id" target="_blank"><strong>{{item.bt}}</strong><br/>[详细]</a></div>
+                                           </div>
+                                           <ul v-else>
+                                               <li><a :href="'article.html?id='+item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                           </ul>
+                                       </template>
+                                   </div>
+								</div>
+                              <div class="wen2">									
+                                  <div class="biaoti1" style="border-bottom:solid 1px #b9070d;width:370px"><img src="images/gdjy.png" /><span class="more"><a href="newslist.html?ffl=12"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen1" id="gdjy" v-cloak>
+                                       <template v-for="(item,index) in gdjy">
+                                           <div v-if="index == 0" class="pic01">
+                                               <div class="pic01_pic"><a :href="'article.html?id='+ item.id" target="_blank"><img :src="url + '/file/' + item.fm" width="140" height="86" border="0"></a></div>
+                                               <div class="pic01_content"><a :href="'article.html?id='+item.id" target="_blank"><strong>{{item.bt}}</strong><br/>[详细]</a></div>
+                                           </div>
+                                           <ul v-else>
+                                               <li><a :href="'article.html?id='+item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                           </ul>
+                                       </template>
+                                   </div>
+                              </div>
+                              <div class="clear"></div>
+                         </div>
+              </div>
+                    <div class="right">
+                         <div class="tu1" style="float:none">
+                                   <div class="biaoti1"><img src="images/3.png" /><span class="more"><a href="newslist.html?ffl=4"  target="_blank">更多</a></span></div>
+                                   <div class="tuwen2">
+                                       <ul id="lawContainer1" v-cloak>
+	                                        <li v-for="item in tzgg"><a :href="'article.html?id='+ item.id" target="_blank">{{item.bt}}</a><span>[{{item.createtime}}]</span></li>
+                                       </ul>
+                                 </div>
+                      </div>
+                      <div style="margin:5px 0px 2px 0px;" id="loginPage">
+                        <div style="border-bottom:solid 1px #b9070d;height:28px; width:250px; background-image:url(images/index_0.png); background-repeat:no-repeat;"></div>
+                        <div style="height:122px; width:250px; overflow:hidden; border:1px #D8D8D6 solid; background-repeat:repeat-x;">
+                          <!--用户登陆 Begin-->
+                            <div style="margin-left:3px;    margin-top: 17px;">
+                              <div> 用户名:
+                                <input type="text" name="username" id="username" style="border:1px #CCC solid; background-image:url(images/Index_09.jpg); background-repeat:no-repeat; background-position:left center; height:24px; width:170px; padding-left:20px; padding-top:4px;">
+                              </div>
+                              <div style="margin-top:10px;">密&nbsp;&nbsp;&nbsp;码:
+                                <input type="password" name="password" id="password" style="border:1px #CCC solid; background-image:url(images/Index_12.jpg); background-repeat:no-repeat; background-position:left center; height:24px; width:170px; padding-left:20px; padding-top:4px;">
+                              </div>
+                              <div style="margin-top:10px; text-align:center;">
+                                <div style="text-align:center;">
+                                  <button type="button" id="login" style="cursor: pointer; border:0px; background-color:transparent; background-image:url(images/Index_14.jpg); background-repeat:no-repeat; width:56px; height:21px;">&nbsp;登录</button>
+                                  &nbsp;&nbsp;
+                                  <button type="button" onclick="window.location.href='Register.asp';" style="display: none; border:0px; background-image:url(images/Index_16.jpg); background-repeat:no-repeat; width:56px; height:21px;">&nbsp;注册</button>
+                                &nbsp;&nbsp;<a href="findpassword.asp" target="_blank">忘记密码</a> </div>
+                              </div>
+                            </div>  
+                          </form>
+                          <!--用户登陆 End-->
+                        </div>
+                      </div>
+                      <div style="margin:5px 0px 2px 0px; display: none;" id="welcomePage">
+                            <div style="height:28px; width:250px; background-image:url(./images/index_0.png); background-repeat:no-repeat;"></div>
+                            <div style="height:122px; width:250px; overflow:hidden; border:1px #D8D8D6 solid; background-repeat:repeat-x;">
+                              <!--用户登陆 Begin-->
+                                <h4>欢迎 组织部</h4>
+                                <a href="../jvrong/index.html?u=admin"  target="_blank">登陆后台管理系统</a>
+                              <!--用户登陆 End-->
+                            </div>
+                          </div>
+                            <div class="zhuanti">
+                                 <div class="biaoti1" style="border-bottom:solid 1px #b9070d;"><img src="images/zzzl.png" /></div>
+                                 <div class="zl"><a href="newslist.html?fl=20"  target="_blank" style="color: transparent"><img src="images/zgxx.jpg" width="270" height="60" /></a></div>
+                                 <div class="zl"><a href="newslist.html?ffl=13"  target="_blank" style="color: transparent"><img src="images/xryr.gif" width="270" height="60" /></a></div>
+                                 <div class="zl"><a href="newslist.html?ffl=15"  target="_blank" style="color: transparent"><img src="images/dyzyz.gif" width="270" height="60" /></a></div>
+                                 <div class="zl"><a href="newslist.html?ffl=16"  target="_blank" style="color: transparent"><img src="images/bmfw.jpg" width="270" height="60" /></a></div>
+                                 <div class="zl"><a href="http://www.jrxf.gov.cn/sdsn.asp?ID=2570"  target="_blank" style="color: transparent"><img src="images/sdsl.jpg" width="270" height="60" /></a></div>
+                            </div>
+                            <div class="zhuanti">
+                                 <div class="biaoti1" style="border-bottom:solid 1px #b9070d;"><img src="images/zhfw.png" /></div>
+                                 <div class="zl"><a href="http://122.14.200.202:8080"  target="_blank" style="color: transparent"><img src="images/xxpt.jpg" width="270" height="60" /></a></div>
+                                 <div class="zl"><a href="http://222.187.120.92:8086/login.aspx"  target="_blank" style="color: transparent"> <img src="images/daxs.jpg" width="270" height="60" /></a></div>
+                                 <div class="zl"><a href="http://jd7.idorp.org:5551/login.html"  target="_blank" style="color: transparent"><img src="images/qn.jpg" width="270" height="60" /></a></div>
+                                 <div class="zl"><a href="http://122.97.218.162:18006/JRparty2/0_login/login.html"  target="_blank" style="color: transparent"><img src="images/bszn.png" width="270" height="60" /></a></div>
+                            </div>
+							<div class="zhuanti">
+                                 <div class="biaoti1" style="border-bottom:solid 1px #b9070d;"><img src="images/yzhg.png" /></div>
+                                 <div class="zl1">
+										<div class="tuwen1">
+                                       <ul id="yzzzhg" v-cloak>
+                                           <li v-for="item in yzzzhg"><a :href="'article.html?id='+ item.id" target="_blank">{{item.bt}}</a></li>
+                                       </ul>
+                                 </div>
+								 </div>
+                            </div>
+              </div>
+                    <div class="clear"></div>
+               </div>
+
+            <div class="poiner_video" style="height:660px; margin-top:10px;"><iframe allowtransparency="true" src="http://www.jsxf.gov.cn/jsxfHDnew/spgb/hdpqt/" frameborder="0" scrolling="no" style="width:1050px;height:660px; float:left;"></iframe></div>
+
+               
+            <div class="link">
+              <div class="biaoti4">友情链接</div>
+                 <ul>
+                     <li><a target="_blank" href="http://www.people.com.cn/"  target="_blank"><img src="images/rm.jpg" width="102" height="42"></a></li>
+                     <li><a target="_blank" href="http://cpc.people.com.cn/"  target="_blank"><img src="images/zggcd.jpg" width="102" height="42"></a></li>
+                     <li><a target="_blank" href="http://www.12371.cn/"  target="_blank"><img src="images/gcd.jpg" width="102" height="42"></a></li>
+                     <li><a target="_blank" href="http://www.jszzb.gov.cn/"  target="_blank"><img src="images/zgjs.jpg" width="102" height="42"></a></li>
+                     <li><a target="_blank" href="http://www.jsxf.gov.cn/"  target="_blank"><img src="images/jsxf.jpg" width="102" height="42"></a></li>
+                     <li><a target="_blank" href="http://www.zjdj.gov.cn/"  target="_blank"><img src="images/bgyj.jpg" width="102" height="42"></a></li>
+                     <li><a target="_blank" href="http://www.jsrcgz.gov.cn/2111111210/2111111404/"  target="_blank"><img src="images/jrrc.jpg" width="102" height="42"></a></li>
+                     <li><a target="_blank" href="http://www.fdjr.cn/"  target="_blank"><img src="images/fdjr.jpg" width="102" height="42"></a></li>
+                     <div class="clear"></div>
+                 </ul>
+              </div>
+          </div>
+     </div>
+</div>
+
+ <script>
+     $(window).scroll(function() {
+         var docScroll = $(document).scrollTop();
+         if(docScroll > 700){
+             $(".right_").css("visibility","visible")
+         }else{
+             $(".right_").css("visibility","hidden")
+         }
+         $('.left_,.right_').css('top', docScroll+50);
+     })
+ $("#login").click(function(){
+		 var param = {};
+		 param.zh =$("#username").val();
+		 param.mm =  $("#password").val();
+         $.ajax({
+             url: "http://"+ window.location.host + '/gly/login',
+             type: 'post',
+             contentType: 'application/json;charset=UTF-8',
+             dataType: 'json',
+             data: JSON.stringify(param),
+             success: function (data) {
+                 if(data.result){
+                     $("#loginPage").hide();
+                     $("#welcomePage").show();
+                     $.cookie('jurong-xf', data.obj, { expires: 7  ,path: '/'})
+                 }else{
+                     alert("账号密码错误！")
+                 }
+             }
+         })
+ })
+ function findParamFromUrl(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+	if (r != null)
+		return unescape(r[2]);
+	return null; // 返回参数值
+}
+var c = findParamFromUrl("c")
+if(c){
+	$(".index").addClass("active1");	
+}
+     var url = "http://"+ window.location.host;
+ var address_app = function () {
+ var ractive;
+ var ractive1;
+ var ractive2;
+ var ractive3;
+ var zsjs,djyj,gbgz,jczz,lbtp
+ function renderView() {
+	 $.ajax({
+         url: url + "/lbtp/getLbtp",
+         type: "get",
+         success: function (response) {
+        	 lbtp = new Vue({
+                 el: "#KinSlideshow",
+                 data: function() {
+                     return {
+                         url: '',
+                         lbtp: []
+                     }
+                 },
+                 mounted: function() {
+                     this.url = url;
+                     this.lbtp  = response;
+                 },
+                 updated: function() {
+                     $("#KinSlideshow").KinSlideshow();
+                 }
+             })
+         }
+	 })
+ 	 $.ajax({
+          url: url + "/wz/getIndexs",
+          type: "get",
+          success: function (response) {
+         	 ractive = new Vue({
+                  el: "#lawContainer",
+                  data: function() {
+                      return {
+                          bddt: []
+                      }
+                  },
+                 mounted: function() {
+                      this.bddt  = response.bddt;
+                 }
+              })
+         	ractive1 = new Vue({
+                el: "#lawContainer1",
+                data: function() {
+                    return {
+                        tzgg: []
+                    }
+                },
+                mounted: function() {
+                    this.tzgg  = response.tzgg;
+                }
+            })
+         	ractive2 = new Vue({
+                el: "#lawContainer2",
+                data: function() {
+                    return {
+                        url: "",
+                        dygl: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.dygl = response.dygl;
+                }
+            })
+         	ractive3 = new Vue({
+                el: "#yzzzhg",
+                data: function() {
+                    return {
+                        url: "",
+                        yzzzhg: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.yzzzhg = response.yzzzhg;
+                }
+            })
+         	ractive4 = new Vue({
+                el: "#rcgz",
+                data: function() {
+                    return {
+                        url: "",
+                        rcgz: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.rcgz = response.rcgz;
+                }
+            })
+         	ractive5 = new Vue({
+                el: "#ycjy",
+                data: function() {
+                    return {
+                        url: "",
+                        ycjy: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.ycjy = response.ycjy;
+                }
+            })
+         	ractive6 = new Vue({
+                el: "#gdjy",
+                data: function() {
+                    return {
+                        url: "",
+                        gdjy: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.gdjy = response.gdjy;
+                }
+            })
+         	zsjs = new Vue({
+                el: "#zsjs",
+                data: function() {
+                    return {
+                        url: "",
+                        zsjs: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.zsjs = response.zsjs;
+                }
+            })
+         	djyj = new Vue({
+                el: "#djyj",
+                data: function() {
+                    return {
+                        url: "",
+                        djyj: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.djyj = response.djyj;
+                }
+            })
+         	gbgz = new Vue({
+                el: "#gbgz",
+                data: function() {
+                    return {
+                        url: "",
+                        gbgz: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.gbgz = response.gbgz;
+                }
+            })
+         	jczz = new Vue({
+                el: "#jczz",
+                data: function() {
+                    return {
+                        url: "",
+                        jczz: []
+                    }
+                },
+                mounted: function() {
+                    this.url  = url;
+                    this.jczz = response.jczz;
+                }
+            })
+          }
+      })
+}
+
+ return {
+     init: function () {
+         renderView();
+     }
+ }
+}();
+$(document).ready(address_app.init)
+ </script>
+</body>
+</html>

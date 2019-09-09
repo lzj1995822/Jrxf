@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jtzh.szcj.mapper.LbtpMapper">
+  <resultMap id="BaseResultMap" type="com.jtzh.szcj.entity.Lbtp">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mc" jdbcType="VARCHAR" property="mc" />
+    <result column="lj" jdbcType="VARCHAR" property="lj" />
+    <result column="tp" jdbcType="VARCHAR" property="tp" />
+    <result column="px" jdbcType="INTEGER" property="px" />
+    <result column="tpwz" jdbcType="CHAR" property="tpwz" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delflag" jdbcType="CHAR" property="delflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mc, lj, tp, px, tpwz, create_time, delflag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lbtp
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="getLbtp"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lbtp
+    where delflag != 'D' order by px DESC
+    
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lbtp
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jtzh.szcj.entity.Lbtp">
+    insert into lbtp (id, mc, lj, tp, 
+      px, tpwz, create_time, 
+      delflag)
+    values (#{id,jdbcType=BIGINT}, #{mc,jdbcType=VARCHAR}, #{lj,jdbcType=VARCHAR}, #{tp,jdbcType=VARCHAR}, 
+      #{px,jdbcType=INTEGER}, #{tpwz,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{delflag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jtzh.szcj.entity.Lbtp">
+    insert into lbtp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mc != null">
+        mc,
+      </if>
+      <if test="lj != null">
+        lj,
+      </if>
+      <if test="tp != null">
+        tp,
+      </if>
+      <if test="px != null">
+        px,
+      </if>
+      <if test="tpwz != null">
+        tpwz,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="delflag != null">
+        delflag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mc != null">
+        #{mc,jdbcType=VARCHAR},
+      </if>
+      <if test="lj != null">
+        #{lj,jdbcType=VARCHAR},
+      </if>
+      <if test="tp != null">
+        #{tp,jdbcType=VARCHAR},
+      </if>
+      <if test="px != null">
+        #{px,jdbcType=INTEGER},
+      </if>
+      <if test="tpwz != null">
+        #{tpwz,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jtzh.szcj.entity.Lbtp">
+    update lbtp
+    <set>
+      <if test="mc != null">
+        mc = #{mc,jdbcType=VARCHAR},
+      </if>
+      <if test="lj != null">
+        lj = #{lj,jdbcType=VARCHAR},
+      </if>
+      <if test="tp != null">
+        tp = #{tp,jdbcType=VARCHAR},
+      </if>
+      <if test="px != null">
+        px = #{px,jdbcType=INTEGER},
+      </if>
+      <if test="tpwz != null">
+        tpwz = #{tpwz,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null">
+        delflag = #{delflag,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updataLbtp" parameterType="com.jtzh.szcj.entity.Lbtp">
+    update lbtp
+    set mc = #{mc,jdbcType=VARCHAR},
+      lj = #{lj,jdbcType=VARCHAR},
+      tp = #{tp,jdbcType=VARCHAR},
+      px = #{px,jdbcType=INTEGER},
+      tpwz = #{tpwz,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+    <update id="removeLbtp">
+    update lbtp
+    set 
+      delflag = 'D'
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+</mapper>

@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title id="ttt"></title>
+<link type="text/css" rel="stylesheet" href="styles/css.css" />
+<link rel="stylesheet" href="../../static/pagination.css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="../jvrong/Public/Plugin/style/js/bootstrap.min.js"></script>
+<script src="js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+<script src="../jvrong/Public/Plugin/style/js/ractive-legacy.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../static/jquery.pagination.js"></script>
+</head>
+
+<body>
+<div class="body" style="background-image: url(./images/bg.png);    background-repeat: round;    background-color: #eeeeee;">
+     <div class="head">
+          <div class="top body_center">
+               <div class="logo"><img src="images/logo_2.png" /></div>
+               <div class="tianqi"><iframe width="305" scrolling="no" height="30" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=1&icon=1&py=jurong&wind=1&num=1&site=14"></iframe></div>
+
+          </div>
+          <!--<div class="nav_">-->
+               <!--<ul class="body_center">-->
+                   <!--<li><a class="sy" href="index.html?c=index">网站首页</a></li>-->
+                   <!--<li><a class="zsjs" href="newslist.html?ffl=5&c=zsjs">自身建设</a></li>-->
+                   <!--<li><a class="djyj" href="newslist.html?ffl=6&c=djyj">党建研究</a></li>-->
+                   <!--<li><a class="gbgz" href='newslist.html?ffl=7&c=gbgz'>干部工作</a></li>-->
+                   <!--<li><a class="jczz" href='newslist.html?ffl=8&c=jczz'>基层组织</a></li>-->
+                   <!--<li><a class="dygl" href='newslist.html?ffl=9&c=dygl'>党员管理</a></li>-->
+                   <!--<li><a class="rcgz" href='newslist.html?ffl=10&c=rcgz'>人才工作</a></li>-->
+                   <!--<li><a class="ycjy" href='newslist.html?ffl=11&c=ycjy'>远程教育</a></li>-->
+               <!--</ul>-->
+          <!--</div>-->
+          <!--<div id="solid">-->
+            <!--<div class="solid0"></div><div class="solid1"></div><div class="solid2"></div>-->
+            <!--<ul>-->
+                <!--<li><img src="images/banner_1.jpg" width="100%" height="270" /></li>-->
+                <!--<li><img src="images/banner_2.jpg" width="100%" height="270" /></li>-->
+                <!--<li><img src="images/banner_1.jpg" width="100%" height="270"/></li>-->
+                <!--<li><img src="images/banner_2.jpg" width="100%" height="270"/></li>-->
+                <!--<li><img src="images/banner_1.jpg" width="100%" height="270"/></li>-->
+            <!--</ul>-->
+            <!--<div id="btt"><span></span> <span></span> <span></span> <span></span> <span></span></div>-->
+        <!--</div>-->
+        <script src="js/fordboy.js"></script>
+     </div>
+     <div class="main">
+         <div class="body_center">
+             <div class="new_left" id="mune">
+                   
+             </div>
+             <div class="new_right">
+                  <div class="biaoti1"><span style="margin-right:10px;"  id="title1"></span></div>
+                  <div class="tuwen3">
+                       <ul id="wzlist">
+                           
+                       </ul>
+                   </div>
+                   <div class="m-style" style="display: block;float: right">
+                                    <nav aria-label="Page navigation">
+                                        <div id="Pagination1" class="pagination mst">
+
+                                        </div>
+                                    </nav>
+                                	</div>
+                  
+             </div>
+             <div class="clear"></div>
+         </div>
+     </div>
+     <div class="footer">
+          <div class="footnav">|&nbsp;<a href="index.html">网站首页</a>&nbsp;|&nbsp;<a href="contact.html">联系我们</a>&nbsp;|</div>
+          <div class="foot">版权所有：中共句容市委组织部&nbsp;&nbsp;域名备案：苏ICP备12016583号-1</div>
+     </div>
+
+</div>
+<script type="text/ractive" id="muneC">
+					<div class="redbiaoti" href="">{{mune.ffl.fl}}</div>
+</script>
+<script type="text/ractive" id="wzC">
+{{#each wz:i}}
+<li><a href="article.html?id={{wz[i].id}}">{{wz[i].bt}}</a><span>[{{wz[i].createtime}}]</span></li>
+{{/each}}
+</script>
+<script>
+var url = "http://"+ window.location.host;
+function findParamFromUrl(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+	if (r != null)
+		return unescape(r[2]);
+	return null; // 返回参数值
+}
+var c = findParamFromUrl("c")
+$(".body_center").find("a").removeClass("active");
+$("."+c).addClass("active");
+var flid=findParamFromUrl("fl");
+var fflid=findParamFromUrl("ffl");
+ var address_app = function () {
+ var ractive,ractive1;
+	var pageSize = 20;
+    var page = 1;
+	var param1 = {};
+	param1.flid = flid;
+	param1.fflid = fflid;
+ function renderView() {
+	 getDataList(1);
+ 	function getDataList(currPage){
+	 var param = {};
+	 param.page = currPage;
+ 	 param.pageSize = pageSize;
+ 	 param.flid = flid;
+ 	 param.fflid = fflid;
+ 	 $.ajax({
+          url: url + "/wz/getWz",
+          type: "post",
+          data: JSON.stringify(param),
+          dataType: "json",
+          contentType: "application/json",
+          success: function (response) {
+        	 ractive = new Ractive({
+                  el: "#wzlist",
+                  template: "#wzC",
+                  oncomplete: function () {
+                 	ractive.set("wz",response.data)
+                 	if(response.data && response.data.length>0){
+                 	    if(response.data[0].ffl != null){
+                            $("#title1").html("<strong>|"+response.data[0].ffl+"</strong>")
+                        }else{
+                            $("#title1").html("<strong>|"+response.data[0].fl+"</strong>")
+                        }
+
+                        $("#ttt").html(obj.fl);
+                 	}
+                 	$("#Pagination1").pagination(
+                            {
+                                pageCount: Math.ceil(response.total / pageSize),
+                                totalData: response.total,
+                                showData: pageSize,
+                                current:currPage,
+                                callback: function (api) {
+                                    getDataList(api.getCurrent())
+                                }//回调函数
+                            });
+                  }
+              })
+          }
+      })
+      
+      $.ajax({
+    	  url: url + "/fl/getFl",
+          type: "post",
+          data: JSON.stringify(param1),
+          dataType: "json",
+          contentType: "application/json",
+          success: function (response) {
+        	  ractive1 = new Ractive({
+                  el: "#mune",
+                  template: "#muneC",
+                  oncomplete: function () {
+                	$(".body_center").find("a").removeClass("active");
+                	$("."+response.ffl.ys).addClass("active");
+                	ractive1.set("mune",response)
+                	$.each(response.fl,function(i,obj){
+                		if(flid == obj.flid){
+
+                            if(obj.ffl != null){
+                                $("#title1").html("<strong>|"+obj.ffl+"</strong>")
+                            }else {
+                                $("#title1").html("<strong>|"+obj.fl+"</strong>")
+                            }
+                            $("#ttt").html(obj.fl);
+                			$("#"+flid).css("color","#d40206")
+                		}
+                	})
+                 	
+                  }
+              })
+          }
+      })
+ 	}
+}
+ return {
+     init: function () {
+         renderView();
+     }
+ }
+}();
+$(document).ready(address_app.init)
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+        location="C:/Users/JTZH/.m2/repository/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar" />
+    <context id="context1" defaultModelType="flat">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+            <property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳 -->
+        </commentGenerator>
+        <jdbcConnection driverClass="org.gjt.mm.mysql.Driver"
+            connectionURL="jdbc:mysql://127.0.0.1:3306/wyait" userId="root"
+            password="123456" />
+
+
+        <javaModelGenerator targetPackage="com.jtzh.szcj.entity" targetProject="jrxf" />
+        <sqlMapGenerator targetPackage="com.jtzh.szcj.mapper" targetProject="jrxf" />
+        <javaClientGenerator targetPackage="com.jtzh.szcj.mapper" targetProject="jrxf" type="XMLMAPPER" />
+
+        <table schema="" tableName="school_info" enableCountByExample="false"
+            enableUpdateByExample="false" enableDeleteByExample="false"
+            enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>

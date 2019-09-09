@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<title>后台管理</title>
+
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="Public/Plugin/style/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace.min.css" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace-skins.min.css" />
+		
+		<script src="Public/Plugin/style/js/ace-extra.min.js"></script>
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='Public/Plugin/style/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='Public/Plugin/style/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="Public/Plugin/style/js/bootstrap.min.js"></script>
+		<script src="Public/Plugin/style/js/typeahead-bs2.min.js"></script>
+
+		<script src="Public/Plugin/style/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.slimscroll.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.sparkline.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.pie.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.resize.min.js"></script>
+		<script src="Public/Plugin/style/js/ace-elements.min.js"></script>
+		<script src="Public/Plugin/style/js/ace.min.js"></script>
+        <script src="../jurong/js/jquery.cookie.js"></script>
+	</head>
+	<body>
+<div class="navbar navbar-default" id="navbar">
+	<div class="navbar-container" id="navbar-container">
+		<div class="navbar-header pull-left">
+			<a href="#" class="navbar-brand">
+				<small>
+					后台管理系统
+				</small>
+			</a><!-- /.brand -->
+		</div><!-- /.navbar-header -->
+
+		<div class="navbar-header pull-right" role="navigation">
+			<ul class="nav ace-nav">
+				<li class="light-blue">
+			<div class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+					</div>
+				</li>
+				<li class="light-blue">
+					<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+						<span class="user-info">
+							admin</span>
+
+						<i class="icon-caret-down"></i>
+					</a>
+
+					<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+						<li>
+							<a href="/index.php/Admin/Login/logout.html">
+								<i class="icon-off"></i>
+								注销
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul><!-- /.ace-nav -->
+		</div><!-- /.navbar-header -->
+	</div><!-- /.container -->
+</div>
+<div class="main-container" id="main-container">
+	<div class="main-container-inner">
+		<div class="sidebar" id="sidebar">
+	<script type="text/javascript">
+		try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+	</script>
+
+	<ul class="nav nav-list">
+		<li class="active">
+			<a href="">
+				<i class="icon-home"></i>
+				<span class="menu-text"> 后台设置 </span>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)">
+				<i class="icon-list"></i>
+				<span class="menu-text"> 文章管理 </span>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)">
+				<i class="icon-list"></i>
+				<span class="menu-text"> 轮播图管理 </span>
+			</a>
+		</li> 
+	</ul><!-- /.nav-list -->
+
+	<script type="text/javascript">
+		try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+	</script>
+</div>
+
+        <script type="text/javascript" language="javascript"> 
+   		function iframeResize(iframe) {
+	        iframe.height = $(window).height()-90;
+	    }
+		</script>
+		<div class="main-content">
+			<div class="breadcrumbs" id="breadcrumbs">
+				<ul class="breadcrumb">
+					<li><i class="icon-home home-icon"></i> <a href="javascript:void(0);">后台设置</a></li>
+					<li class="active">后台设置</li>
+				</ul>
+			</div>
+			<div id="content_main">
+				<iframe src="" id="main_iframe" name="main_iframe"
+					style="width: 100%;" frameborder="0" onload="iframeResize(this);"  scrolling="yes"></iframe>	
+			</div>
+		</div>
+
+	</div>
+</div>
+		<script type="text/javascript">
+		/* 菜单管理 */
+        $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+            options.xhrFields = {
+                withCredentials: true
+            }
+            options.crossDomain = true
+        });
+        function checkLogin(key){
+            var param = {};
+            param.key = key;
+            $.ajax({
+                url: "http://"+ window.location.host + '/gly/loginCheck',
+                type: 'post',
+                contentType: 'application/json;charset=UTF-8',
+                dataType: 'json',
+                data: JSON.stringify(param),
+                success: function (data) {
+                    if(data.result){
+                        $('#main_iframe').attr("src",data.obj);
+                    }else{
+                        alert("请先登录！")
+                        window.location.href = "../jurong/index.html"
+                    }
+                }
+            })
+        }
+        $('.nav.nav-list li').removeClass('active');
+        $(this).addClass('active');
+        $('#breadcrumbs ul li').eq(0).html('菜单管理');
+        checkLogin("菜单管理")
+		$('.nav.nav-list li').eq(0).click(function() {
+			$('.nav.nav-list li').removeClass('active');
+			$(this).addClass('active');
+			$('#breadcrumbs ul li').eq(0).html('菜单管理');
+            checkLogin("菜单管理")
+		});
+		/*图书名称*/
+		$('.nav.nav-list li').eq(1).click(function() {
+			$('.nav.nav-list li').removeClass('active');
+			$(this).addClass('active');
+			$('#breadcrumbs ul li').eq(1).html('文章管理');
+            checkLogin("文章管理")
+		});
+		/* 轮播图管理 */
+		$('.nav.nav-list li').eq(2).click(function() {
+			$('.nav.nav-list li').removeClass('active');
+			$(this).addClass('active');
+			$('#breadcrumbs ul li').eq(1).html('轮播图管理');
+            checkLogin("轮播图管理")
+		});
+		</script>
+		</body>
+</html>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jtzh.szcj.mapper.GlyMapper">
+  <resultMap id="BaseResultMap" type="com.jtzh.szcj.entity.Gly">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="zh" jdbcType="VARCHAR" property="zh" />
+    <result column="mm" jdbcType="VARCHAR" property="mm" />
+    <result column="qxz" jdbcType="VARCHAR" property="qxz" />
+    <result column="zt" jdbcType="VARCHAR" property="zt" />
+    <result column="delflag" jdbcType="CHAR" property="delflag" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, zh, mm, qxz, zt, delflag, createTime
+  </sql>
+  <select id="seleteGlys" resultMap="BaseResultMap">
+  select 
+    <include refid="Base_Column_List" />
+    from gly where delflag !='D'
+  </select>
+  
+  <select id="getGlyByZh" resultType="java.lang.Integer">
+  	select count(1)
+    from gly where zh = #{zh} and delflag !='D'
+  </select>
+    <select id="seleteGlysByZh" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" />
+    from gly where zh = #{zh} and delflag !='D'
+  </select>
+  <select id="selectById" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gly
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gly
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jtzh.szcj.entity.Gly">
+    insert into gly (id, zh, mm, qxz, 
+      zt, delflag, createTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{zh,jdbcType=VARCHAR}, #{mm,jdbcType=VARCHAR}, #{qxz,jdbcType=VARCHAR}, 
+      #{zt,jdbcType=VARCHAR}, #{delflag,jdbcType=CHAR}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jtzh.szcj.entity.Gly">
+    insert into gly
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="zh != null">
+        zh,
+      </if>
+      <if test="mm != null">
+        mm,
+      </if>
+      <if test="qxz != null">
+        qxz,
+      </if>
+      <if test="zt != null">
+        zt,
+      </if>
+      <if test="delflag != null">
+        delflag,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="zh != null">
+        #{zh,jdbcType=VARCHAR},
+      </if>
+      <if test="mm != null">
+        #{mm,jdbcType=VARCHAR},
+      </if>
+      <if test="qxz != null">
+        #{qxz,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null">
+        #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jtzh.szcj.entity.Gly">
+    update gly
+    <set>
+      <if test="zh != null">
+        zh = #{zh,jdbcType=VARCHAR},
+      </if>
+      <if test="mm != null">
+        mm = #{mm,jdbcType=VARCHAR},
+      </if>
+      <if test="qxz != null">
+        qxz = #{qxz,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null">
+        zt = #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        delflag = #{delflag,jdbcType=CHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jtzh.szcj.entity.Gly">
+    update gly
+    set zh = #{zh,jdbcType=VARCHAR},
+      mm = #{mm,jdbcType=VARCHAR},
+      qxz = #{qxz,jdbcType=VARCHAR},
+      zt = #{zt,jdbcType=VARCHAR},
+      delflag = #{delflag,jdbcType=CHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+    <update id="updateZt">
+    update gly
+    set zt = #{zt,jdbcType=VARCHAR}
+    where zh = #{zh,jdbcType=INTEGER}
+  </update>
+  
+   <update id="updateMm">
+    update gly
+    set mm = #{mm,jdbcType=VARCHAR}
+    where zh = #{zh,jdbcType=INTEGER}
+  </update>
+  
+  <update id="removeZh">
+    update gly
+    set delflag = 'D'
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

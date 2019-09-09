@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<title>后台管理</title>
+
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- basic styles -->
+
+		<link href="Public/Plugin/style/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/font-awesome.min.css" />
+
+		<link rel="stylesheet" href="Public/Plugin/style/css/font-awesome-ie7.min.css" />
+		
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace.min.css" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="../../static/fileinput.min.css" />
+		<link rel="stylesheet" href="../../static/pagination.css" />
+        <link rel="stylesheet" href="laydate/theme/default/laydate.css" />
+		<script src="Public/Plugin/style/js/ace-extra.min.js"></script>
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='Public/Plugin/style/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='Public/Plugin/style/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="Public/Plugin/style/js/bootstrap.min.js"></script>
+		<script src="Public/Plugin/style/js/typeahead-bs2.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.slimscroll.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.sparkline.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.pie.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.resize.min.js"></script>
+		<script src="Public/Plugin/style/js/ace-elements.min.js"></script>
+		<script src="Public/Plugin/style/js/ace.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../../static/ueditor/ueditor.config.js"></script>
+    	<script type="text/javascript" charset="utf-8" src="../../static/ueditor/ueditor.all.js"> </script>
+    	<script type="text/javascript" charset="utf-8" src="../../static/ueditor/lang/zh-cn/zh-cn.js"></script>
+    	<script type="text/javascript" charset="utf-8" src="../../static/fileinput.min.js"></script>
+    	<script type="text/javascript" charset="utf-8" src="../../static/fileinput_locale_zh.js"></script>
+    	<script type="text/javascript" charset="utf-8" src="../../static/jquery.pagination.js"></script>
+    	<script src="Public/Plugin/style/js/ractive-legacy.js"></script>
+        <script src="laydate/laydate.js"></script>
+	</head>
+	<body>
+<div class="col-sm-12 widget-container-span">
+	<div class="widget-box transparent">
+		<div class="widget-header">
+			<div class="widget-toolbar no-border">
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="active" id="gl"><a href="wz.html">管理</a></li>
+					<li id="xgtj"><a data-toggle="tab" href="#home2" >添加/修改</a></li>
+                    </li>
+				</ul>
+			</div>
+			<div style="clear:both;"></div>
+			<div style="margin:20px 0px;">
+                      名称<input type="text" value="" name="name" placeholder="输入名称" id="name"/>
+                     <input type="button" value="查询" style="height:30px;" id="search"/>
+			</div>
+		</div>
+
+		<div class="widget-body">
+			<div class="widget-main padding-12 no-padding-left no-padding-right">
+				<div class="tab-content padding-4">
+					<div id="home1" class="tab-pane in active">
+						<div class="row">
+							<div class="col-xs-12 no-padding-right">
+								<div class="table-responsive">
+									<table id="sample-table-1"
+										class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>排序</th>
+												<th>名称</th>
+												<th>分类</th>
+												<th>点击</th>
+												<th>审核状态</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tbody id="lawContainer">
+										
+										</tbody>
+									</table>
+									<div class="m-style" style="display: block;float: right">
+                                    <nav aria-label="Page navigation">
+                                        <div id="Pagination1" class="pagination mst">
+
+                                        </div>
+                                    </nav>
+                                	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div id="home2" class="tab-pane in">
+							<div class="tabbable">
+								<div class="tab-content">
+									<div class="tab-pane active">
+										<table cellpadding="2" cellspacing="2" width="100%">
+											<tbody>
+												<tr>
+													<td>分类:</td>
+													<td><select class="select_2" name="addmenuid" id="fl">
+															<option value="3;本地动态"> 本地动态</option>
+															<option value="4;通知公告"> 通知公告</option>
+															<option value="6;党建研究"> 党建研究</option>
+															<option value="7;干部工作"> 干部工作</option>
+															<option value="22;干部政策;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 干部政策</option>
+															<option value="23;干部管理;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 干部管理</option>
+															<option value="24;干部教育;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 干部教育</option>
+															<option value="25;干部监督;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 干部监督</option>
+															<option value="26;后备干部;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 后备干部</option>
+															<option value="27;大学生村官;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 大学生村官</option>
+															<option value="28;公务员管理;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 公务员管理</option>
+															<option value="29;严肃换届纪律专栏;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 严肃换届纪律专栏</option>
+															<option value="30;换届风气监督;7;干部工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 换届风气监督</option>
+															<option value="8;基层组织"> 基层组织</option>
+															<option value="48;农村党建;8;基层组织">&nbsp;&nbsp;&nbsp;&nbsp;├─ 农村党建</option>
+															<option value="49;机关党建;8;基层组织">&nbsp;&nbsp;&nbsp;&nbsp;├─ 机关党建</option>
+															<option value="50;社区党建;8;基层组织">&nbsp;&nbsp;&nbsp;&nbsp;├─ 社区党建</option>
+															<option value="51;“三为”党建品牌展示;8;基层组织">&nbsp;&nbsp;&nbsp;&nbsp;├─ “三为”党建品牌展示</option>
+															<option value="52;优秀主题党日活动展示;8;基层组织">&nbsp;&nbsp;&nbsp;&nbsp;├─ 优秀主题党日活动展示</option>
+															<option value="53;非公企业党建;8;基层组织">&nbsp;&nbsp;&nbsp;&nbsp;├─ 非公企业党建</option>
+															<option value="54;新社会组织党建;8;基层组织">&nbsp;&nbsp;&nbsp;&nbsp;├─ 人新社会组织党建</option>
+															<option value="9;党员管理"> 党员管理</option>
+															<option value="10;人才工作"> 人才工作</option>
+															<option value="31;人才政策;10;人才工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 人才政策</option>
+															<option value="32;人才管理;10;人才工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 人才管理</option>
+															<option value="33;人才培训;10;人才工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 人才培训</option>
+															<option value="34;人才风采;10;人才工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 人才风采</option>
+															<option value="35;人才动态;10;人才工作">&nbsp;&nbsp;&nbsp;&nbsp;├─ 人才动态</option>
+															<option value="11;远程教育"> 远程教育</option>
+															<option value="55;文件通知;11;远程教育">&nbsp;&nbsp;&nbsp;&nbsp;├─ 文件通知</option>
+															<option value="56;远教动态;11;远程教育">&nbsp;&nbsp;&nbsp;&nbsp;├─ 远教动态</option>
+															<option value="57;教学资源;11;远程教育">&nbsp;&nbsp;&nbsp;&nbsp;├─ 教学资源</option>
+															<option value="58;他山之石;11;远程教育">&nbsp;&nbsp;&nbsp;&nbsp;├─ 他山之石</option>
+															<option value="59;媒体报道;11;远程教育">&nbsp;&nbsp;&nbsp;&nbsp;├─ 媒体报道</option>
+															<option value="12;各地经验"> 各地经验</option>
+															<option value="5;自身建设">   自身建设</option>
+															<option value="18;一周组织工作回顾;5;自身建设">&nbsp;&nbsp;&nbsp;&nbsp;├─    一周组织工作回顾</option>
+															<option value="19;部内文件;5;自身建设">&nbsp;&nbsp;&nbsp;&nbsp;├─ 部内文件</option>
+															<option value="20;组工信息;5;自身建设">&nbsp;&nbsp;&nbsp;&nbsp;├─ 组工信息</option>
+															<option value="21;组工论坛;5;自身建设">&nbsp;&nbsp;&nbsp;&nbsp;├─ 组工论坛</option>
+															<option value="13;选人用人阳光监督">   选人用人阳光监督</option>
+															<option value="36;高层言论;13;选人用人阳光监督">&nbsp;&nbsp;&nbsp;&nbsp;├─  高层言论</option>
+															<option value="37;政策法规;13;选人用人阳光监督">&nbsp;&nbsp;&nbsp;&nbsp;├─  政策法规</option>
+															<option value="38;工作动态;13;选人用人阳光监督">&nbsp;&nbsp;&nbsp;&nbsp;├─  作动态</option>
+															<option value="39;一把手谈两责;13;选人用人阳光监督">&nbsp;&nbsp;&nbsp;&nbsp;├─ 一把手谈两责</option>
+															<option value="15;党员志愿服务中心">   党员志愿服务中心</option>
+															<option value="40;志愿课堂;15;党员志愿服务中心">&nbsp;&nbsp;&nbsp;&nbsp;├─  志愿课堂</option>
+															<option value="41;志愿者风采;15;党员志愿服务中心">&nbsp;&nbsp;&nbsp;&nbsp;├─  志愿者风采</option>
+															<option value="42;志愿者招募;15;党员志愿服务中心">&nbsp;&nbsp;&nbsp;&nbsp;├─  志愿者招募</option>
+															<option value="43;服务申请;15;党员志愿服务中心">&nbsp;&nbsp;&nbsp;&nbsp;├─  服务申请</option>
+															<option value="16;党员创业网上课堂">   党员创业网上课堂</option>
+															<option value="44;创业项目;16;党员创业网上课堂">&nbsp;&nbsp;&nbsp;&nbsp;├─ 创业项目</option>
+															<option value="45;相关政策;16;党员创业网上课堂">&nbsp;&nbsp;&nbsp;&nbsp;├─ 相关政策</option>
+															<option value="46;课程点播;16;党员创业网上课堂">&nbsp;&nbsp;&nbsp;&nbsp;├─ 课程点播</option>
+															<option value="47;产品推广;16;党员创业网上课堂">&nbsp;&nbsp;&nbsp;&nbsp;├─ 产品推广</option>
+																												</select></td>
+												</tr>
+												<tr>
+													<td>名称:</td>
+													<td><input type="text" class="input col-sm-6" name="addname" value="" id="mc"></td>
+												</tr>
+												<tr>
+													<td>排序:</td>
+													<td><input type="text" class="input col-sm-2" name="addsort" value="" id="px"></td>
+												</tr>
+												<tr>
+													<td>图片:</td>
+													<td><div style="width: 21.6%;display: inline-block;">
+							                                <input id="fujian" name="fujian" type="file" style="width: 50%;">
+							                            </div>
+													<p class="help-block" id="addimage"><span style="color: #ff0000;">建议尺寸620*464</span>允许的附件文件类型: jpg,gif,png,jpeg并且图片大小小于200k.</p></td>
+												</tr>
+												<tr>
+													<td>内容:</td>
+													<td><!-- style给定宽度可以影响编辑器的最终宽度 -->
+														<script id="editor" type="text/plain" style="width:660px;height:240px;"></script>
+													</td>
+												</tr>
+                                                <tr>
+                                                    <td>发布时间:</td>
+                                                    <td><input type="text" class="input col-sm-2" name="addsort" value="" id="fbsj"></td>
+                                                </tr>
+										</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form-actions">
+								<button class="btn btn-primary btn_submit J_ajax_submit_btn"
+									type="button" onclick="tj()">提交</button>
+								<a class="btn" href="">返回</a>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/ractive" id="lawTemplate">
+			{{#each data:i}}
+											<tr>
+												<td>{{i+1}}</td>
+												<td>{{data[i].px}}</td>
+												<td>{{data[i].bt}}</td>
+												<td>{{data[i].fl}}</td>
+												<td>{{data[i].ydl}}</td>
+{{#if data[i].zt=='1'}}
+												<td>显示</td>
+{{/if}}
+{{#if data[i].zt=='0'}}
+												<td>不显示</td>
+{{/if}}
+												<td>
+{{#if data[i].zt=='0'}}
+	<a class="J_ajax_del btn btn-white btn-sm" href="javascript:void(0);" on-click="sh">显示</a>&nbsp;
+{{/if}}
+{{#if data[i].zt=='1'}}
+	<a class="J_ajax_del btn btn-white btn-sm" href="javascript:void(0);" on-click="sh">不显示</a>&nbsp;
+{{/if}}
+<a href="javascript:void(0);" on-click="xg" class="btn btn-white btn-sm" data-toggle="tab" href="#home2">修改</a>
+<a class="J_ajax_del btn btn-white btn-sm" on-click="sc" href="javascript:void(0);">删除</a>
+
+											</tr>
+			{{/each}}
+
+		</script>
+		<script type="text/javascript">
+		var url = "http://"+ window.location.host;
+        laydate.render({
+            elem: '#fbsj'
+            ,type: 'datetime'
+        });
+			var address_app = function () {
+			var pageSize = 15;
+            var page = 1;
+		    function renderView() {
+		        ractive = new Ractive({
+		            el: "#lawContainer",
+		            template: "#lawTemplate",
+		            data: {
+		                formatD: function (d) {
+		                    if (d) {
+		                        return moment(d).format("YYYY-MM-DD HH:mm:ss");
+		                    }
+		                }
+		            },
+		            oncomplete: function () {
+		            	$("#search").click(function(){
+		            		getDataList(1)
+		            	})
+		                getDataList(1)
+		            }
+		        })
+		        ractive.on({
+		        	sh: function (e) {
+		        		var zt;
+		                if(e.context.zt == '0'){
+		                	zt = '1'
+		                }else{
+		                	zt = '0'
+		                }
+		                $.ajax({
+		                    url: url + "/wz/modifyZt/" + e.context.id+"/"+zt,
+		                    type: "get",
+		                    success: function (data) {
+		                    	if(data && data == 1){
+		                    		getDataList(1);
+		                    		alert("修改成功！")
+		                    	}
+		                    }
+		                });
+		            },
+		            sc: function (e) {
+		                $.ajax({
+		                    url: url + "/wz/removeWz/" + e.context.id,
+		                    type: "get",
+		                    success: function (data) {
+		                    	if(data && data == 1){
+		                    		getDataList(1);
+		                    		alert("删除成功！")
+		                    	}
+		                    }
+		                });
+		            },
+		            xg:function(e){
+		            	$("#gl").removeClass("active");
+		            	$("#xgtj").addClass("active");
+		            	$("#mc").val(e.context.bt)
+		            	$("#px").val(e.context.px)
+                        $("#fbsj").val(e.context.createtime)
+		            	UE.getEditor('editor').setContent(e.context.nr)
+		            	$("#home2").attr("code",e.context.id)
+		            	var _key ; 
+		            	if(e.context.ffl){
+		            		_key = e.context.flid+";"+e.context.fl+";"+e.context.fflid+";"+e.context.ffl;
+		            	}else{
+		            		_key = e.context.flid+";"+e.context.fl;
+		            	}
+		            	$(".select_2").find("option[value='"+_key+"']").attr("selected",true);
+		            	if(e.context.fm){
+		            		var _url = url + '/file/'+e.context.fm
+			            	$("#addimage").parent().append('<img code="'+e.context.fm+'" src="'+_url+'" id="goodimage" width="210" height="280" class="img-thumbnail">');	
+		            	}
+		            }
+		        })
+		        function getDataList(currPage){
+		        	var param ={};
+		        	param.page = currPage;
+		        	param.pageSize = pageSize;
+		        	param.bt = $("#name").val();
+		            $.ajax({
+		                url: url + "/wz/getWz",
+		                type: "post",
+	    		        data: JSON.stringify(param),
+	    		        dataType: "json",
+	    		        contentType: "application/json",
+		                success: function (response) {
+		                	if(response){
+		                		ractive.set("data",response.data)
+		                		$("#Pagination1").pagination(
+                                     {
+                                         pageCount: Math.ceil(response.total / pageSize),
+                                         totalData: response.total,
+                                         showData: pageSize,
+                                         current:currPage,
+                                         callback: function (api) {
+                                             getDataList(api.getCurrent())
+                                         }//回调函数
+                                     });	
+		                	}
+		                	 
+		                }
+		            })
+
+		        }
+		    }
+
+		    return {
+		        init: function () {
+		            renderView();
+		        },
+		        search:function(){
+		        	getDataList(1)
+		        }
+		    }
+		}();
+		$(document).ready(address_app.init)
+		var ue = UE.getEditor('editor');
+	    UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+	    UE.Editor.prototype.getActionUrl = function(action) {
+	        if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadimage' || action=='uploadfile') {
+	            return url+'/imgUpload';
+	        }else{
+	            return this._bkGetActionUrl.call(this, action);
+	        }
+	    }
+	    var p ;
+	    var file="";
+	    var setting = {
+                language: 'zh', //设置语言
+                uploadUrl: "../../../file/fileUpload?id=fujian", //上传的地址(访问接口地址)
+                allowedFileExtensions: ['jpg', 'png','gif','jpeg'],//接收的文件后缀
+                uploadAsync: true, //默认异步上传
+                showUpload: true, //是否显示上传按钮
+                showRemove: true, //显示移除按钮
+                showPreview: false, //是否显示预览
+                showCaption: true,//是否显示标题
+                browseClass: "btn btn-primary butt butthov", //按钮样式
+                dropZoneEnabled: false,//是否显示拖拽区域
+                maxFileCount: 1, //表示允许同时上传的最大文件个数
+                enctype: 'multipart/form-data',
+                validateInitialCount: true,
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
+            };
+            $('#fujian').fileinput(setting).on("fileuploaded", function (event, data, previewId, index) {
+            	p = data.response.obj;
+            });
+            function tj(){
+            	var param={};
+            	var id = $("#home2").attr("code")
+            	var fl =   $("#fl").val();
+            	var fls = fl.split(';');
+            	if(fls.length > 2){
+            		param.fl=fls[1];
+            		param.flid=fls[0];
+            		param.ffl=fls[3];
+            		param.fflid=fls[2];
+            	}else if(fls.length == 2){
+            		param.fl=fls[1];
+            		param.flid=fls[0];
+            	}
+            	param.px = $("#px").val();
+            	param.bt = $("#mc").val();
+            	param.fm = p;
+                param.createtime = $("#fbsj").val();
+            	param.nr = UE.getEditor('editor').getContent();
+				if(id){
+					if(!p){
+						param.fm = $("#goodimage").attr("code")
+					}
+					param.id=id;
+					$.ajax({
+        		        url: url + "/wz/updateWz",
+        		        type: "post",
+        		        data: JSON.stringify(param),
+        		        dataType: "json",
+        		        contentType: "application/json",
+        		        success: function (response) {
+        		        	if(response == 1){
+        		        		alert("文章修改成功！")
+        		        		window.location.href="wz.html";
+        		        	}else{
+        		        		alert("操作失败！")
+        		        	}
+        					
+        		        }
+        		    });
+            	}else{
+            		$.ajax({
+        		        url: url + "/wz/addWz",
+        		        type: "post",
+        		        data: JSON.stringify(param),
+        		        dataType: "json",
+        		        contentType: "application/json",
+        		        success: function (response) {
+        		        	if(response == 1){
+        		        		alert("文章新建成功！")
+        		        		window.location.href="wz.html";
+        		        	}else{
+        		        		alert("操作失败！")
+        		        	}
+        					
+        		        }
+        		    });
+            	}
+            }
+	</script>
+	</div>
+</div>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jtzh.szcj.mapper.WzMapper">
+  <resultMap id="BaseResultMap" type="com.jtzh.szcj.entity.Wz">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="px" jdbcType="INTEGER" property="px" />
+    <result column="bt" jdbcType="VARCHAR" property="bt" />
+    <result column="fl" jdbcType="VARCHAR" property="fl" />
+    <result column="flid" jdbcType="VARCHAR" property="flid" />
+    <result column="ydl" jdbcType="BIGINT" property="ydl" />
+    <result column="zt" jdbcType="CHAR" property="zt" />
+    <result column="fm" jdbcType="VARCHAR" property="fm" />
+    <result column="nr" jdbcType="VARCHAR" property="nr" />
+    <result column="fflid" jdbcType="VARCHAR" property="fflid" />
+    <result column="ffl" jdbcType="VARCHAR" property="ffl" />
+    <result column="fj" jdbcType="VARCHAR" property="fj" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="delflag" jdbcType="CHAR" property="delflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, px, bt, fl, flid, ydl, zt, fm, nr, fflid, ffl, createTime, delflag,fj
+  </sql>
+  
+  <select id="getWzInfo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wz
+    where delflag !='D' and id=#{id}
+  </select>
+  
+  <select id="getUp" resultMap="BaseResultMap">
+  		select id, bt from wz where id = (select id from wz where id &lt; #{id} and flid=#{flid}  order by id desc limit 1)
+  </select>
+  <select id="getDown" resultMap="BaseResultMap">
+	  select id, bt from wz where id = (select id from wz where id &gt; #{id} and flid=#{flid}  order by id asc  limit 1)
+  </select>
+  <select id="getWz" parameterType="com.jtzh.szcj.common.page.Page" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wz
+    where delflag !='D'
+    <if test="page.param.bt != null and page.param.bt != ''">
+    and (bt like concat('%', #{page.param.bt}, '%') or fl like concat('%', #{page.param.bt}, '%'))
+    </if>
+    <if test="page.param.flid != null and page.param.flid != ''">
+    and flid = #{page.param.flid} 
+    </if>
+    <if test="page.param.fflid != null and page.param.fflid != ''">
+    and (fflid = #{page.param.fflid} or flid = #{page.param.fflid})
+    </if>
+    order by createTime DESC limit #{page.start},#{page.pageSize}
+  </select>
+  
+   <select id="getWzTotal" parameterType="com.jtzh.szcj.common.page.Page" resultType="java.lang.Integer">
+    select count(1)
+    from wz
+    where delflag !='D'
+    <if test="page.param.bt != null and page.param.bt != ''">
+    and (bt like concat('%', #{page.param.bt}, '%') or fl like concat('%', #{page.param.bt}, '%'))
+    </if>
+    <if test="page.param.flid != null and page.param.flid != ''">
+    and flid = #{page.param.flid} 
+    </if>
+    <if test="page.param.fflid != null and page.param.fflid != ''">
+    and (fflid = #{page.param.fflid} or flid = #{page.param.fflid})
+    </if>
+  </select>
+  
+   <select id="getWzs" resultMap="BaseResultMap" parameterType="com.jtzh.szcj.entity.Wz">
+    select id, px, bt, fl, flid, ydl, zt, fm, fflid, ffl, createTime
+    from wz 
+    where delflag !='D'
+    <if test="flid != null and flid != ''">
+    and (flid = #{flid} or fflid = #{flid})
+    </if>
+     order by px DESC
+  </select>
+     <select id="getindex" resultMap="BaseResultMap">
+       SELECT * FROM (select id, px, bt, fl, flid, ydl, zt, fm, fflid, ffl, createTime
+       from wz
+       where delflag !='D'
+       <if test="flid != null and flid != ''">
+         and (flid = #{flid} or fflid = #{flid})
+       </if>
+       order by px DESC,createTime  DESC limit 0,1) t1
+       union
+       SELECT * FROM (select id, px, bt, fl, flid, ydl, zt, fm, fflid, ffl, createTime
+       from wz
+       where delflag !='D'
+       <if test="flid != null and flid != ''">
+         and (flid = #{flid} or fflid = #{flid})
+       </if>
+       order by createTime  DESC limit 0,#{Size}) t2
+  </select>
+  <delete id="deleteByPrimaryKey"  parameterType="java.lang.Long">
+    delete from wz
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jtzh.szcj.entity.Wz">
+    insert into wz (id, px, bt, fl, 
+      flid, ydl, zt, fm, 
+      nr, fflid, ffl, createTime, 
+      delflag,fj)
+    values (#{id,jdbcType=BIGINT}, #{px,jdbcType=INTEGER}, #{bt,jdbcType=VARCHAR}, #{fl,jdbcType=VARCHAR}, 
+      #{flid,jdbcType=VARCHAR}, #{ydl,jdbcType=BIGINT}, #{zt,jdbcType=CHAR}, #{fm,jdbcType=VARCHAR}, 
+      #{nr,jdbcType=VARCHAR}, #{fflid,jdbcType=VARCHAR}, #{ffl,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{delflag,jdbcType=CHAR},#{fj,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jtzh.szcj.entity.Wz">
+    insert into wz
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="px != null">
+        px,
+      </if>
+      <if test="bt != null">
+        bt,
+      </if>
+      <if test="fl != null">
+        fl,
+      </if>
+      <if test="flid != null">
+        flid,
+      </if>
+      <if test="ydl != null">
+        ydl,
+      </if>
+      <if test="zt != null">
+        zt,
+      </if>
+      <if test="fm != null">
+        fm,
+      </if>
+      <if test="nr != null">
+        nr,
+      </if>
+      <if test="fflid != null">
+        fflid,
+      </if>
+      <if test="ffl != null">
+        ffl,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="delflag != null">
+        delflag,
+      </if>
+        <if test="fj != null">
+            fj,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="px != null">
+        #{px,jdbcType=INTEGER},
+      </if>
+      <if test="bt != null">
+        #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null">
+        #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="flid != null">
+        #{flid,jdbcType=VARCHAR},
+      </if>
+      <if test="ydl != null">
+        #{ydl,jdbcType=BIGINT},
+      </if>
+      <if test="zt != null">
+        #{zt,jdbcType=CHAR},
+      </if>
+      <if test="fm != null">
+        #{fm,jdbcType=VARCHAR},
+      </if>
+      <if test="nr != null">
+        #{nr,jdbcType=VARCHAR},
+      </if>
+      <if test="fflid != null">
+        #{fflid,jdbcType=VARCHAR},
+      </if>
+      <if test="ffl != null">
+        #{ffl,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=CHAR},
+      </if>
+        <if test="fj != null">
+            #{fj,jdbcType=CHAR},
+        </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jtzh.szcj.entity.Wz">
+    update wz
+    <set>
+      <if test="px != null">
+        px = #{px,jdbcType=INTEGER},
+      </if>
+      <if test="bt != null">
+        bt = #{bt,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null">
+        fl = #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="flid != null">
+        flid = #{flid,jdbcType=VARCHAR},
+      </if>
+      <if test="ydl != null">
+        ydl = #{ydl,jdbcType=BIGINT},
+      </if>
+      <if test="zt != null">
+        zt = #{zt,jdbcType=CHAR},
+      </if>
+      <if test="fm != null">
+        fm = #{fm,jdbcType=VARCHAR},
+      </if>
+      <if test="nr != null">
+        nr = #{nr,jdbcType=VARCHAR},
+      </if>
+      <if test="fflid != null">
+        fflid = #{fflid,jdbcType=VARCHAR},
+      </if>
+      <if test="ffl != null">
+        ffl = #{ffl,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+        <if test="delflag != null">
+            delflag = #{delflag,jdbcType=CHAR},
+        </if>
+        <if test="fj != null">
+        fj = #{fj,jdbcType=CHAR},
+    </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateWz" parameterType="com.jtzh.szcj.entity.Wz">
+    update wz
+    set px = #{px,jdbcType=INTEGER},
+      bt = #{bt,jdbcType=VARCHAR},
+      fl = #{fl,jdbcType=VARCHAR},
+      flid = #{flid,jdbcType=VARCHAR},
+      fm = #{fm,jdbcType=VARCHAR},
+      nr = #{nr,jdbcType=VARCHAR},
+      fflid = #{fflid,jdbcType=VARCHAR},
+      ffl = #{ffl,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      fj = #{fj,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <update id="modifyZt">
+    update wz
+    set 
+      zt = #{zt,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <update id="modifyYdl">
+    update wz set ydl=ydl+'1' where id=#{id}
+  </update>
+	  <select id="getRand" resultMap="BaseResultMap">
+	  SELECT id,bt,createTime FROM wz WHERE id >= ((SELECT MAX(id) FROM wz)-(SELECT MIN(id) FROM wz)) * RAND() + (SELECT MIN(id) FROM wz) limit 5;
+	  </select>
+    <update id="removeWz">
+    update wz
+    set 
+      delflag = 'D'
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

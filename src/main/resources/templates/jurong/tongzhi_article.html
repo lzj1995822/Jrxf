@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>通知详情</title>
+		<link type="text/css" rel="stylesheet" href="styles/css.css" />
+	</head>
+	<script type="text/javascript">
+		//设为首页
+		function SetHome(obj, url) {
+			try {
+				obj.style.behavior = 'url(#default#homepage)';
+				obj.setHomePage(url);
+			} catch(e) {
+				if(window.netscape) {
+					try {
+						netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+					} catch(e) {
+						alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入“about:config”并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
+					}
+				} else {
+					alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【" + url + "】设置为首页。");
+				}
+			}
+		}
+		//收藏本站
+		function AddFavorite(sURL, sTitle) {
+			try {
+				window.external.addFavorite(sURL, sTitle);
+			} catch(e) {
+				try {
+					window.sidebar.addPanel(sTitle, sURL, "");
+				} catch(e) {
+					alert("加入收藏失败，请使用Ctrl+D进行添加");
+				}
+			}
+		}
+	</script>
+
+	<body>
+
+		<div class="body">
+			<div class="head">
+				<div class="top body_center">
+					<div class="logo"><img src="images/logo.jpg" /></div>
+					<div class="hidden">
+						<a href="javascript:void(0);" onclick="SetHome(this,'http://www.xyz.com');">设为首页</a> |
+						<a href="javascript:void(0);" onclick="AddFavorite('我的网站',location.href)">收藏本站</a>
+					</div>
+					<div id="lanrenzhijia1"></div>
+					<script>
+						Date.prototype.Format = function(fmt) { //javascript时间日期函数
+							var o = {
+								"M+": this.getMonth() + 1, //月份 
+								"d+": this.getDate(), //日 
+								"h+": this.getHours(), //小时 
+								"m+": this.getMinutes(), //分 
+								"s+": this.getSeconds(), //秒 
+								"q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+								"S": this.getMilliseconds() //毫秒 
+							};
+							if(/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+							for(var k in o)
+								if(new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+							return fmt;
+						};
+						var time1 = new Date().Format("yyyy-MM-dd"); //获取日期，格式： 年-月-日
+						var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss"); //获取日期，格式： 年-月-日 时-分-秒
+
+						document.getElementById('lanrenzhijia1').innerHTML = time1; //将时间赋值给t1
+						document.getElementById('lanrenzhijia2').innerHTML = time2; //将时间赋值给t2
+					</script>
+
+				</div>
+				<div class="nav">
+					<ul class="body_center">
+						<li id="teshu">
+							<a href="index.html">网站首页</a>
+						</li>
+						<li>
+							<a href="newslist.html">自身建设</a>
+						</li>
+						<li>
+							<a href="newslist.html">党建研究</a>
+						</li>
+						<li>
+							<a href="newslist.html">干部工作</a>
+						</li>
+						<li>
+							<a href="newslist.html">基层组织</a>
+						</li>
+						<li>
+							<a href="newslist.html">党员管理</a>
+						</li>
+						<li>
+							<a href="newslist.html">人才工作</a>
+						</li>
+						<li>
+							<a href="newslist.html">远程教育</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="main">
+				<div class="body_center">
+					<div class="site"><b> 您现在的位置：<a href="index.html">网站首页</a> > 通知公告</b></div>
+					<div class="biaoti3">2016年下半年“福地</div>
+					<div class="intro2">
+						<div class="editor" style="text-align:center;">来源：&nbsp;&nbsp;&nbsp;&nbsp;作者：&nbsp;&nbsp;&nbsp;&nbsp;发布时间：&nbsp;&nbsp;&nbsp;&nbsp;浏览量：</div>
+						<div class="conto">
+							<p>开展“两学一做”学习教育以来，句容市坚决贯彻中央和省、市委部署要求，认真履行主体责任，抓实抓好“学、做、改”三个重点，推动学有实效、做有实绩，引领凝聚“两聚一高”精神力量。</p>
+							<p>带着责任学，把思想教育作为首要任务。紧紧抓牢“学”这个基础，集聚“不忘初心、继续前进”的精神力量。一是领导带头“放样子”。专门制定市委常委会和县处级干部每月“任务清单”，市委常委会先后20多次开展专题学习讨论，带头落实“六个一”；举办三期学习习近平总书记系列讲话精神、学习党章党规专题轮训班，轮训干部600多人；党员领导干部落实“四定四联”要求，回归支部过“生活”，依托“周末学堂”“村书记大讲堂”，为基层上党课530多次。二是支部聚力“唱主角”。发挥支部主体作用，制定“三会一课”执行规范操作手册，一月一主题开展“统一活动日”，严格规范组织生活。每月印发学习教育工作要点，以支部为单位搭建党员讲学平台，“葡萄夜校”“党员交通站”等讲学品牌深入人心,5300多名党员走上讲台讲党课、谈体会，解决了党员难组织的问题。将“立家规、正家风”主题活动拓展到每名党员，每个支部制定支部“大家规”，党员归属感认同感明显增强。三是党员参与全覆盖。开展“四项排查”清理，将1083名失联党员重新纳入组织教育管理。市级专家巡回宣讲团与基层骨干讲学团上下联动，参训党员达4500余人次。开通“句容先锋”党建APP，定期向流动党员发送“党员家语”，组织党员干部与2300多名年老体弱党员结对帮学、送学上门，推动全市3.6万名党员全部学起来、做起来。</p>
+							<p>带着问题改，把群众满意作为根本标准。坚持边学边改、即知即改，以解决问题的实效取信于民。着力解决党员队伍存在的突出问题。组织开展“新时期共产党员行为规范”等5个专题大讨论，对照“四个合格”开好民主生活会和专题组织生活会，每名党员对照“四讲四有”找准“病因”，查找出不像党员、不起作用、不守规矩等问题12大类8600多条。着力解决基层党组织存在的突出问题。组建市镇两级173个督导组，深入开展“十组百支”集中督查、学习教育日常巡查、基层党建7项重点任务专项督查，做到“存在问题当场指出，整改时限当面明确”。针对督查中表现集中的问题，市委以“书记项目”为抓手推进问题整改，市委书记带头领办“农村党组织‘强基暖心’工程”，36个基层党（工）委书记分别将农村党组织运行标准化建设、强化镇村年轻村干部培养激励措施、“党员之家”扩面提标等列为“书记项目”重点攻坚，补齐基层党建工作“短板”。着力解决群众反映强烈的突出问题。针对农民增收这个“硬指标”，积极推广“村社合一”党建模式，抓党建促脱贫的做法在《中国组织人事报》整版报道。针对少数机关不作为这个“硬骨头”，推进机关“效能革命”,实施思想引领、尽职提效、激励担当、整庸治懒四项行动，让群众对政府更有信心。针对环境保护这个“硬杠子”，扎实开展“263”专项行动，全面改善农村环境质量,全力打造“美丽句容”。</p>
+						</div>
+						<div class="sxpian">
+							<strong>上一篇：</strong>
+							<a href="new.html" title="#">剖析常州网站建设采用动态网页还是静态网页？</a> <strong>
+                        下一篇：</strong>
+							<a href="new.html" title="#">没有了</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="footnav">|&nbsp;
+					<a href="index.html">网站首页</a>&nbsp;|&nbsp;
+					<a href="contact.html">联系我们</a>&nbsp;|</div>
+				<div class="foot">版权所有：中共句容市委组织部&nbsp;&nbsp;域名备案：苏ICP备12016583号-1</div>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<title>后台管理</title>
+
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="Public/Plugin/style/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace.min.css" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="Public/Plugin/style/css/ace-skins.min.css" />
+		<script src="Public/Plugin/style/js/ace-extra.min.js"></script>
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='Public/Plugin/style/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='Public/Plugin/style/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="Public/Plugin/style/js/bootstrap.min.js"></script>
+		<script src="Public/Plugin/style/js/typeahead-bs2.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.slimscroll.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="Public/Plugin/style/js/jquery.sparkline.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.pie.min.js"></script>
+		<script src="Public/Plugin/style/js/flot/jquery.flot.resize.min.js"></script>
+		<script src="Public/Plugin/style/js/ace-elements.min.js"></script>
+		<script src="Public/Plugin/style/js/ace.min.js"></script>
+		<script src="Public/Plugin/style/js/ractive-legacy.js"></script>
+	</head>
+<body>
+<div class="col-sm-12 widget-container-span">
+	<div class="widget-box transparent">
+		<div class="widget-header">
+			<div class="widget-toolbar no-border">
+				<ul class="nav nav-tabs" id="myTab2">
+					<li><a data-toggle="tab" href="#home1">修改密码</a></li>
+					<li><a data-toggle="tab" href="#home6">添加管理员</a></li>
+					<li class="active"><a data-toggle="tab" href="#home7">管理员列表</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="widget-body">
+			<div class="widget-main padding-12 no-padding-left no-padding-right">
+				<div class="tab-content padding-4">
+					<div id="home1" class="tab-pane in">
+						<div class="row">
+							<div class="col-xs-12 no-padding-right">
+								<form class="form-horizontal" role="form" action="/index.php/Admin/Index/changepass.html" method="post">
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-field-1"> 原密码： </label>
+										<div class="col-sm-9">
+											<input type="password" id="ymm"
+												value="" name="oldpass" class="col-xs-10 col-sm-6">
+										</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-field-2"> 新密码： </label>
+										<div class="col-sm-9">
+											<input type="password" id="xmm"
+												value="" name="newpass" class="col-xs-10 col-sm-6">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-field-2"> 确认新密码： </label>
+
+										<div class="col-sm-9">
+											<input type="password" id="qrmm"
+												value="" name="newpass2" class="col-xs-10 col-sm-6">
+										</div>
+									</div>
+
+									<div class="clearfix form-actions">
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-info" type="button" onclick="xgmm()">
+												<i class="icon-ok bigger-110"></i> 提交
+											</button>
+											&nbsp; &nbsp; &nbsp;
+											<button class="btn" type="button" onclick="qx()">
+												<i class="icon-undo bigger-110"></i> 取消
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div id="home6" class="tab-pane in">
+						<div class="row">
+							<div class="col-xs-12 no-padding-right">
+								<form class="form-horizontal" role="form" action="/index.php/Admin/Index/addadmin.html" method="post">
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-field-1"> 用户名： </label>
+
+										<div class="col-sm-9">
+											<input type="text" id="name"
+												value="" name="name" class="col-xs-10 col-sm-6">
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-field-2"> 密码： </label>
+
+										<div class="col-sm-9">
+											<input type="password" id="password"
+												value="" name="pass" class="col-xs-10 col-sm-6">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"
+											for="form-field-2"> 权限组： </label>
+
+										<div class="col-sm-9">
+											<select name="adclass">
+				                              <option value="1">超级管理员</option>
+				                            </select>
+										</div>
+									</div>
+									
+
+									<div class="clearfix form-actions">
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-info" type="button" onclick="xjgly()">
+												<i class="icon-ok bigger-110"></i> 提交
+											</button>
+
+											&nbsp; &nbsp; &nbsp;
+											<button class="btn" type="button" onclick="qx()">
+												<i class="icon-undo bigger-110"></i> 取消
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					<div id="home7" class="tab-pane in active">
+						<div class="row">
+							<div class="col-xs-12 no-padding-right">
+								<div class="table-responsive">
+									<table id="sample-table-1"
+										class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>编号</th>
+												<th>用户名</th>
+												<th>权限组</th>
+												<th>状态</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+
+										<tbody id="lawContainer">
+																			
+										</tbody>
+									</table>
+									<div class="pagination" style="margin:0px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/ractive" id="lawTemplate">
+{{#each data:i}}
+<tr>
+<td>{{i+1}}</td>
+<td>{{data[i].zh}}</td>
+<td>{{data[i].qxz}}</td>
+{{#if data[i].zt == "1"}}
+<td>已启用</td>
+{{else}}
+<td>未启用</td>
+{{/if}}
+<td>
+{{#if data[i].zt == "1"}}
+<a class="J_ajax_del btn btn-white btn-sm" href="javascript:void(0);" on-click="xgzt">停用 </a>
+{{else}}
+<a class="J_ajax_del btn btn-white btn-sm" href="javascript:void(0);" on-click="xgzt">启用 </a>
+{{/if}}
+<a class="J_ajax_del btn btn-white btn-sm" href="javascript:void(0);" onclick="reGood1(4);" style="    margin-left: 5px;">修改</a>
+<a class="J_ajax_del btn btn-white btn-sm"  href="javascript:void(0);" on-click="sc">删除</a>
+</td>
+</tr>
+{{/each}}	
+</script>
+<script type="text/javascript">
+var url = "http://"+ window.location.host;
+function findParamFromUrl(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+	var r = window.parent.location.search.substr(1).match(reg); // 匹配目标参数
+	if (r != null)
+		return unescape(r[2]);
+	return null; // 返回参数值
+}
+var u = findParamFromUrl("u");
+var address_app = function () {
+    function renderView() {
+        ractive = new Ractive({
+            el: "#lawContainer",
+            template: "#lawTemplate",
+            data: {
+                formatD: function (d) {
+                    if (d) {
+                        return moment(d).format("YYYY-MM-DD HH:mm:ss");
+                    }
+                }
+            },
+            oncomplete: function () {
+                getDataList()
+            }
+        })
+        ractive.on({
+            xgzt: function (obj) {
+                var row = obj.context;
+                var zh = row.zh;
+                if(zh == 'admin'){
+                	alert("禁止停用admin账号");
+                	return;
+                }
+                var zt  = row.zt;
+                if(zt=="1"){
+                	zt ="0"; 
+                }else{
+                	zt ="1"; 
+                }
+                $.ajax({
+                    type: "get",
+                    url: url + "/gly/modifyZhZt/"+zh+"/"+zt,
+                    success: function (data) {
+                    	if(data && data == 1){
+                    		getDataList();
+                    		alert("操作成功！")
+                    	}
+                    }
+                })
+            },
+            sc: function (e) {
+                $.ajax({
+                    url: url + "/gly/removeZh/" + e.context.id,
+                    type: "get",
+                    success: function (data) {
+                    	if(data && data == 1){
+                    		getDataList();
+                    		alert("删除成功！")
+                    	}
+                    }
+                });
+            }
+        })
+        function getDataList(){
+            $.ajax({
+                type: "get",
+                url: url + "/gly/getGlys",
+                success: function (data) {
+                	ractive.set("data",data)
+                }
+            })
+
+        }
+    }
+
+    return {
+        init: function () {
+            renderView();
+        }
+    }
+}();
+$(document).ready(address_app.init)	
+function xjgly(){
+	var zh = $("#name").val().trim();
+	var mm = $("#password").val().trim();
+	if(!zh){
+		return;
+	}
+	if(!mm){
+		return;
+	}
+	$.ajax({
+        url: url + "/gly/addGly",
+        type: "post",
+        data: JSON.stringify({
+        	"zh":zh,
+        	"mm":mm,
+        	"qxz":"超级管理员"
+        }),
+        dataType: "json",
+        contentType: "application/json",
+        success: function (response) {
+			if(response == 0){
+				alert("用户名重复！")
+			}else{
+				alert("新建成功！")
+				window.parent.location.href="index.html"
+			}            
+        }
+    });
+}
+function xgmm(){
+	var xmm = $("#xmm").val().trim();
+	var qrmm = $("#qrmm").val().trim();
+	if(xmm != qrmm){
+		alert("两次输入密码不相同")
+		return;
+	}
+	$.ajax({
+        url: url + "/gly/modifyZhMm/"+u+"/"+xmm,
+        type: "get",
+        success: function (response) {
+			if(response){
+				alert("修改成功！")
+				window.parent.location.href="index.html"
+			}else{
+				alert("密码错误！")
+			}
+        }
+    });
+}
+function qx(){
+	window.parent.location.href="index.html"
+}
+</script>
+</body>
+</html>

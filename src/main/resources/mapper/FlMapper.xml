@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jtzh.szcj.mapper.FlMapper">
+  <resultMap id="BaseResultMap" type="com.jtzh.szcj.entity.Fl">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="flid" jdbcType="VARCHAR" property="flid" />
+    <result column="fl" jdbcType="VARCHAR" property="fl" />
+    <result column="ffl" jdbcType="VARCHAR" property="ffl" />
+    <result column="fflid" jdbcType="VARCHAR" property="fflid" />
+    <result column="ys" jdbcType="VARCHAR" property="ys" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, flid, fl, ffl, fflid,ys
+  </sql>
+  <select id="selectByflid" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fl
+    where flid = #{flid,jdbcType=INTEGER}
+  </select>
+    <select id="selectByfflid" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fl
+    where fflid = #{fflid,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fl
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jtzh.szcj.entity.Fl">
+    insert into fl (id, flid, fl, 
+      ffl, fflid)
+    values (#{id,jdbcType=INTEGER}, #{flid,jdbcType=VARCHAR}, #{fl,jdbcType=VARCHAR}, 
+      #{ffl,jdbcType=VARCHAR}, #{fflid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jtzh.szcj.entity.Fl">
+    insert into fl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="flid != null">
+        flid,
+      </if>
+      <if test="fl != null">
+        fl,
+      </if>
+      <if test="ffl != null">
+        ffl,
+      </if>
+      <if test="fflid != null">
+        fflid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="flid != null">
+        #{flid,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null">
+        #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="ffl != null">
+        #{ffl,jdbcType=VARCHAR},
+      </if>
+      <if test="fflid != null">
+        #{fflid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jtzh.szcj.entity.Fl">
+    update fl
+    <set>
+      <if test="flid != null">
+        flid = #{flid,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null">
+        fl = #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="ffl != null">
+        ffl = #{ffl,jdbcType=VARCHAR},
+      </if>
+      <if test="fflid != null">
+        fflid = #{fflid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jtzh.szcj.entity.Fl">
+    update fl
+    set flid = #{flid,jdbcType=VARCHAR},
+      fl = #{fl,jdbcType=VARCHAR},
+      ffl = #{ffl,jdbcType=VARCHAR},
+      fflid = #{fflid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
