@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=9" />
+    <title>不忘初心，牢记使命</title>
+    <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="js/vue.js" type="text/javascript"></script>
+    <script src="js/axios.min.js" type="text/javascript"></script>
+    <script src="js/swiper.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="js/swiper.min.css">
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+    <div id="main" >
+        <div class="header">
+            <img src="images/newJr/banner.png" style="width: 100%;height: 100%">
+        </div>
+        <div class="menu">
+            <template v-for="(items,index) in menus">
+                <span class="menuItems" @click="menuActive(items,index)" ><a :href="'#'+items.name" :style="activeStyle[index]">{{items.text}}</a></span>
+            </template>
+        </div>
+        <div class="topOne">
+            <div class="topOneLeft">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-color:darkorange">Slide 1</div>
+                        <div class="swiper-slide" style="background-color:indianred">Slide 2</div>
+                        <div class="swiper-slide" style="background-color:blue">Slide 3</div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            <div class="topOneRight">
+                <ul>
+                    <li v-for="items in topOneData"><a :href="detailUrl+'?id='+items.id" target="_blank" style="color: #000">{{items.title}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="topTwo">
+            <!--<div class="topTwoHeader"></div>-->
+            <div>
+            <div class="topTwoDetailLeft"><a name="spirit"></a>
+                <div><span><img src="images/newJr/spirit.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=spirit'" target="_blank" style=" color: #9baab3;">更多</a></div></div></div>
+                <div class="listBlock">
+                    <ul>
+                        <li v-for="items in spirit">
+                            <div class="line"></div>
+                            <div class="text">{{items.msg}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="topTwoDetailRight"><a name="deploy"></a>
+                <div><span><img src="images/newJr/deploy.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div></div>
+                <div class="listBlock">
+                    <ul>
+                        <li v-for="items in spirit">
+                            <div class="line"></div>
+                            <div class="text">{{items.msg}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="middleOne">
+                <div class="middleOneHeader">
+                    <img src="images/newJr/redOne.png" style="height: 100%;width: 100%">
+                </div>
+                <div class="middleOnedetail">
+                    <div class="topTwoDetailLeft"><a name="dynamic"></a>
+                        <div><span><img src="images/newJr/dynamic.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div></div>
+                        <div class="listBlock">
+                            <ul>
+                                <li v-for="items in spirit">
+                                    <div class="line"></div>
+                                    <div class="text">{{items.msg}}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="topTwoDetailRight"><a name="discuss"></a>
+                        <div><span><img src="images/newJr/discuss.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div></div>
+                        <div  class="listBlock">
+                            <ul>
+                                <li v-for="items in spirit">
+                                    <div class="line"></div>
+                                    <div class="text">{{items.msg}}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="middleTwo">
+                <!--<div class="middleTwoHeader">-->
+                    <!--<img src="images/newJr/redTwo.png" style="height: 100%;width: 100%">-->
+                <!--</div>-->
+                <div class="middleTwDetailLeft"><a name="model"></a>
+                    <div><span><img src="images/newJr/model.png" class="titleImg" style="position: relative;width: 600px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div>
+                    </div>
+                    <div class="peopleList">
+                        <ul>
+                            <li v-for="items in personImages" style="white-space:normal;overflow-scrolling: auto">
+                                <div class="pic">
+                                    <a :href="url+items.linkId"><img :src="items.pic"  style="width: 100%;height: 100%"></a>
+                                </div>
+                                <div class="tit">
+                                    <a :href="url+items.linkId" style="color: white;text-decoration:none">{{items.name}}</a>
+                                </div
+                                ><div class="ab">
+                                {{items.ms}}
+                            </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="middleTwDetailRight"><a name="inspection"></a>
+                    <div><span><img src="images/newJr/inspection.png" class="titleImg" style="position: relative;width: 300px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div>
+                    </div>
+                    <div class="inspection">
+                        <ul>
+                            <li v-for="items in inspection"><a href="url+items.linkId" style="color: #000000;">{{items.msg}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="bottom">
+            <div class="bottomHeader">
+                <img src="images/newJr/redTwo.png" style="height: 100%;width: 100%">
+            </div>
+        </div>
+        <div class="books">
+            <div class="booksHeader"><img src="images/newJr/studyPlatform.png" style="width: 100%"></div>
+            <div class="booksDetail">
+                <div class="swiper-containerTwo">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="items in bottomImgs"><a :href="items.url" target="_blank"><img :src="items.src" style="width: 99%"></a></div>
+
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <!--<div class="swiper-pagination"></div>-->
+                    <!--<div class="swiper-button-prev"></div>-->
+                    <!--<div class="swiper-button-next"></div>-->
+                </div>
+                <!--<div v-for="items in bottomImgs" style="width: 300px;height: 250px;margin-left: 15px;display: inline-block;">-->
+                    <!--<img  :src="items" style="width: 100%;height: 100%;">-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="links">
+            <div class="linksHeader"><img src="images/newJr/link.png" style="width: 100%"></div>
+            <div class="linksDetail">
+                <div style="display: inline-block">
+                    <button class="linkBtn">中国江苏网</button>
+                </div>
+                <div style="display: inline-block">
+                    <button class="linkBtn">“不忘初心，牢记使命”主题教育官方网站</button>
+                </div>
+                <div style="display: inline-block">
+                    <button class="linkBtn">镇江市委网站</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+var main = new Vue({
+    el:'#main',
+    components:{
+
+    },
+    data:function() {
+    return {
+        detailUrl:"http://"+ window.location.host+'/templates/jurong/thematicDetail.html',
+        listUrl:"http://"+ window.location.host+'/templates/jurong/thematicList.html',
+        baseUrl:"http://"+ window.location.host,
+        menus:[{text:'中央精神',name:'spirit'},{text:'市委部署',name:'deploy'},{text:'工作动态',name:'dynamic'},{text:'学习研讨',name:'discuss'},{text:'检视整改',name:'inspection'},{text:'优秀楷模',name:'model'}],
+        activeStyle:[{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'}],
+        topOneData:['对标先进践初心 省委政政法委启政法委启政法委启政法委启政法委启法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','11111111111111111','1111111111111111','11111111111111','11111111111111111111'],
+        bottomImgs:[{src:'images/newJr/linkOne.jpg',url:'http://www.12371.cn/special/xxzd/'},{src:'images/newJr/linkTwo.jpg',url:'http://www.12371.cn/special/xg19thjs/'},{src:'images/newJr/linkThree.jpg',url:'http://lxyz.12371.cn/'},{src:'images/newJr/linkFour.jpg',url:'http://www.12371.cn/special/dzby/'},
+            {src:'images/newJr/linkFive.jpg',url:'http://www.jsxf.gov.cn/jsxf/'},
+            {src:'images/newJr/linkSeven.jpg',url:'https://js.xuexi.cn/'}],
+        //任务信息
+        personImages:[{pic:'images/1.jpg',name:'X XX',ms:' 习近平总书记指出，周恩来同志半个多世纪奋斗的人生历程，是中国共产党不忘初心、牢记使命历史的一个生动缩影',linkId:'78945612'},{},{}],
+        //检视整改
+        inspection:[{msg:'赛后的网红爱大啊伟大伟大伟乌兰夫兰佛尔我啊覅我放假啊ioji大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱234的女孩哦额'},{msg:'赛后的网红234爱的女孩哦额'},{msg:'赛后的网红爱的daeawa女孩哦额'},{msg:'赛后dawwa的网红爱的女孩哦额'},{msg:'赛后dawwa的网红爱的女孩哦额'},{msg:'赛后dawwa的网红爱的女孩哦额'},{msg:'赛后dawwa的网红爱的女孩哦额'}],
+       //中央精神
+        spirit:[{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'}],
+        //市委部署
+        deploy:[{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'}],
+        //工作动态
+        dynamic:[{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'}],
+        //学习研讨
+        discuss:[{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'},{msg:'赛后的网红爱大啊伟大伟大伟大的女孩哦额',linkId:'0000'}]
+
+    }
+    },
+    methods:{
+        menuActive: function (val,index){
+            for( var i in this.activeStyle){
+                if(i == index){
+                    this.activeStyle[i].color = 'black'
+                }else {
+                    this.activeStyle[i].color = 'red'
+
+                }
+            }
+
+        }
+    },
+    mounted:function(){
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'horizontal', // 垂直切换选项
+            loop: true, // 循环模式选项
+            autoplay:true,//等同于以下设置
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+                clickable:true
+            }
+        })
+
+        var mySwiperTwo = new Swiper ('.swiper-containerTwo', {
+            direction: 'horizontal', // 垂直切换选项
+            loop: true, // 循环模式选项
+                autoplay: {
+                    delay: 3000,//1秒切换一次
+                    disableOnInteraction: false,
+                },//等同于以下设置
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            slidesPerView:4,
+            slidesPerGroup:1,
+            spaceBetween:30,
+            // 如果需要分页器
+            // pagination: {
+            //     el: '.swiper-pagination',
+            //     clickable:true
+            // }
+        })
+    },
+    created:function(){
+        var _this = this
+        axios({
+            method: 'Post',
+            url: this.baseUrl+'/rememberMission/page',
+            data: {
+                type:'首页头条',
+                page:{page:0,pageSize:8}
+            }
+        }).then(function(data){
+            _this.topOneData = data.data.obj.data
+        });
+    }
+})
+</script>
+</html>
