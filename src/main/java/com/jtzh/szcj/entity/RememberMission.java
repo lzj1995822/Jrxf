@@ -17,7 +17,7 @@ public class RememberMission implements Serializable {
     private String delflag;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    private Date creatTime;
+    private Date createTime = new Date();
 
     private String title;
 
@@ -29,10 +29,10 @@ public class RememberMission implements Serializable {
 
     private String type;
 
-    public RememberMission(int id, String delflag, Date creatTime, String title, String pic, String content, String author, String type) {
+    public RememberMission(int id, String delflag, Date createTime, String title, String pic, String content, String author, String type) {
         this.id = id;
         this.delflag = delflag;
-        this.creatTime = creatTime;
+        this.createTime = createTime;
         this.title = title;
         this.pic = pic;
         this.content = content;
@@ -58,12 +58,12 @@ public class RememberMission implements Serializable {
         this.delflag = delflag;
     }
 
-    public Date getCreatTime() {
-        return creatTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatTime(Date creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getTitle() {

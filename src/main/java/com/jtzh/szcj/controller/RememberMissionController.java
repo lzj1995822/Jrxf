@@ -5,6 +5,7 @@ import com.jtzh.szcj.common.page.Page;
 import com.jtzh.szcj.entity.RememberMission;
 import com.jtzh.szcj.search.RememberMissionSearch;
 import com.jtzh.szcj.service.RememberMissionService;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -26,7 +27,7 @@ public class RememberMissionController {
     }
 
     @PutMapping("/{id}")
-    public ResultObject update(@PathVarible String id, @RequestBody RememberMission rememberMission) {
+    public ResultObject update(@PathVariable String id, @RequestBody RememberMission rememberMission) {
         rememberMission.setId(Integer.valueOf(id));
         Integer insertRows = rememberMissionServiceImpl.update(rememberMission);
         if (insertRows == null || insertRows == 0) {
@@ -36,12 +37,21 @@ public class RememberMissionController {
     }
 
     @GetMapping("/{id}")
-    public ResultObject get(@PathVarible String id) {
+    public ResultObject get(@PathVariable String id) {
         RememberMission rememberMission = rememberMissionServiceImpl.get(Integer.valueOf(id));
         if (rememberMission == null) {
             return ResultObject.of(false, null, "查询失败");
         }
         return ResultObject.of(true, rememberMission, "查询成功");
+    }
+
+    @DeleteMapping("/{id}")
+    public ResultObject delete(@PathVariable String id) {
+        Integer insertRows = rememberMissionServiceImpl.delete(Integer.valueOf(id));
+        if (insertRows == null) {
+            return ResultObject.of(false, null, "删除失败");
+        }
+        return ResultObject.of(true, null, "删除成功");
     }
 
     @PostMapping("/page")

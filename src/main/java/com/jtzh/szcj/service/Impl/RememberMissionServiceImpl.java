@@ -4,10 +4,12 @@ import com.jtzh.szcj.entity.RememberMission;
 import com.jtzh.szcj.mapper.RememberMissionMapper;
 import com.jtzh.szcj.search.RememberMissionSearch;
 import com.jtzh.szcj.service.RememberMissionService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class RememberMissionServiceImpl implements RememberMissionService {
 
     @Resource

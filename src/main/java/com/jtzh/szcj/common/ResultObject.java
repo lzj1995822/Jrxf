@@ -44,6 +44,9 @@ public class ResultObject implements Serializable {
 		this.obj = obj;
 		this.message = message;
 	}
+	public ResultObject() {
+
+	}
 
 	public static ResultObject of(Boolean result, Object object, String message) {
 		return new ResultObject(result, object, message);

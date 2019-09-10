@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jtzh.szcj.mapper.FlMapper">
-  <resultMap id="BaseResultMap" type="com.jtzh.szcj.entity.Fl">
+<mapper namespace="com.jtzh.szcj.mapper.RememberMissionMapper">
+  <resultMap id="BaseResultMap" type="com.jtzh.szcj.entity.RememberMission">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="delflag" jdbcType="VARCHAR" property="delflag" />
-    <result column="creatTime" jdbcType="DATETIME" property="creatTime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="pic" jdbcType="VARCHAR" property="pic" />
@@ -13,20 +13,20 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, delflag, creatTime, title, content, pic , author, `type`
+    id, delflag, createTime, title, content, pic , author, `type`
   </sql>
 
   <insert id="insert" parameterType="com.jtzh.szcj.entity.RememberMission">
-    insert into remember_mission (id, creatTime, title,
+    insert into remember_mission (id, createTime, title,
       content, pic, author, `type`)
-    values (#{id,jdbcType=INTEGER}, #{creatTime,jdbcType=DATETIME}, #{title,jdbcType=VARCHAR},
-      #{content,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}), #{author, jdbcType=VARCHAR}, #{type, jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR},
+      #{content,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{author, jdbcType=VARCHAR}, #{type, jdbcType=VARCHAR})
   </insert>
 
   <update id="update" parameterType="com.jtzh.szcj.entity.RememberMission">
     update remember_mission
-    creatTime, title, content, pic , author, `type`
-    set creatTime = #{creatTime,jdbcType=DATETIME},
+    createTime, title, content, pic , author, `type`
+    set createTime = #{createTime,jdbcType=TIMESTAMP},
       title = #{title,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
@@ -47,18 +47,18 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <select id="page" parameterType="com.jtzh.szcj.search.RememberMissionSearch">
+  <select id="page" parameterType="com.jtzh.szcj.search.RememberMissionSearch" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from remember_mission
     where 1 = 1
     <if test="type != null">
-        and `type` = #{type, jdbcType=String}
+        and `type` = #{type, jdbcType=VARCHAR}
     </if>
     <if test="title != null">
-        and title like concat('%',#{type, jdbcType=String},'%')
+        and title like concat('%',#{title, jdbcType=VARCHAR},'%')
     </if>
-    limit #{page.start, jdbcType=Integer}, #{page.pageSize, jdbcType=Integer}
+    limit #{page.start, jdbcType=INTEGER}, #{page.pageSize, jdbcType=INTEGER}
   </select>
 
 </mapper>
