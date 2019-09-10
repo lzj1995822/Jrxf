@@ -25,7 +25,6 @@
 
   <update id="update" parameterType="com.jtzh.szcj.entity.RememberMission">
     update remember_mission
-    createTime, title, content, pic , author, `type`
     set createTime = #{createTime,jdbcType=TIMESTAMP},
       title = #{title,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},

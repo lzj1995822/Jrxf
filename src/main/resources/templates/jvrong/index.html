@@ -98,7 +98,13 @@
 				<i class="icon-list"></i>
 				<span class="menu-text"> 轮播图管理 </span>
 			</a>
-		</li> 
+		</li>
+		<li>
+			<a href="javascript:void(0)">
+				<i class="icon-list"></i>
+				<span class="menu-text"> 主题教育栏目管理 </span>
+			</a>
+		</li>
 	</ul><!-- /.nav-list -->
 
 	<script type="text/javascript">
@@ -176,6 +182,13 @@
 			$(this).addClass('active');
 			$('#breadcrumbs ul li').eq(1).html('轮播图管理');
             checkLogin("轮播图管理")
+		});
+
+		$('.nav.nav-list li').eq(3).click(function() {
+			$('.nav.nav-list li').removeClass('active');
+			$(this).addClass('active');
+			$('#breadcrumbs ul li').eq(1).html('主题教育栏目管理');
+			checkLogin("主题教育栏目管理")
 		});
 		</script>
 		</body>

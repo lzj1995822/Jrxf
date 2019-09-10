@@ -74,6 +74,9 @@ public class GlyController {
                             case "轮播图管理":
                                 url =  "lbtp.html";
                                 break;
+							case "主题教育栏目管理":
+								url = "remember_mission.html";
+								break;
                         }
                         res.setObj(url);
                         return res;
