@@ -34,4 +34,9 @@ public class RememberMissionServiceImpl implements RememberMissionService {
     public List<RememberMission> page(RememberMissionSearch rememberMissionSearch) {
         return rememberMissionMapper.page(rememberMissionSearch);
     }
+
+    @Override
+    public Integer total(RememberMissionSearch rememberMissionSearch) {
+        return rememberMissionMapper.total(rememberMissionSearch);
+    }
 }

@@ -16,4 +16,6 @@ public interface RememberMissionService {
     RememberMission get(Integer id);
 
     List<RememberMission> page(RememberMissionSearch rememberMissionSearch);
+
+    Integer total(RememberMissionSearch rememberMissionSearch);
 }

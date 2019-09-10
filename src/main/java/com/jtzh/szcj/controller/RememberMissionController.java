@@ -63,6 +63,7 @@ public class RememberMissionController {
         List<RememberMission> rememberMissions = rememberMissionServiceImpl.page(rememberMissionSearch);
         Page page = rememberMissionSearch.getPage();
         page.setData(rememberMissions);
+        page.setTotal(rememberMissionServiceImpl.total(rememberMissionSearch));
         return ResultObject.of(true, page, "查询成功");
     }
 

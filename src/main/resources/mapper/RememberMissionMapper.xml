@@ -60,4 +60,15 @@
     limit #{page.start, jdbcType=INTEGER}, #{page.pageSize, jdbcType=INTEGER}
   </select>
 
+  <select id="total" parameterType="com.jtzh.szcj.search.RememberMissionSearch">
+    select count (1) from remember_mission where 1 = 1
+    <if test="type != null">
+      and `type` = #{type, jdbcType=VARCHAR}
+    </if>
+    <if test="title != null">
+      and title like concat('%',#{title, jdbcType=VARCHAR},'%')
+    </if>
+    limit #{page.start, jdbcType=INTEGER}, #{page.pageSize, jdbcType=INTEGER}
+  </select>
+
 </mapper>

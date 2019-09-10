@@ -17,4 +17,6 @@ public interface RememberMissionMapper {
 
     List<RememberMission> page(RememberMissionSearch rememberMissionSearch);
 
+    Integer total(RememberMissionSearch rememberMissionSearch);
+
 }
