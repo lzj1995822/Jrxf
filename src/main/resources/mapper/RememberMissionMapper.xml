@@ -52,7 +52,13 @@
     <include refid="Base_Column_List"/>
     from remember_mission
     where 1 = 1
-    <if test="">
+    <if test="type != null">
+        and `type` = #{type, jdbcType=String}
+    </if>
+    <if test="title != null">
+        and title like concat('%',#{type, jdbcType=String},'%')
+    </if>
+    limit #{page.start, jdbcType=Integer}, #{page.pageSize, jdbcType=Integer}
   </select>
 
 </mapper>

@@ -38,7 +38,15 @@ public class ResultObject implements Serializable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-	
+
+	public ResultObject(boolean result, Object obj, String message) {
+		this.result = result;
+		this.obj = obj;
+		this.message = message;
+	}
+
+	public static ResultObject of(Boolean result, Object object, String message) {
+		return new ResultObject(result, object, message);
+	}
 
 }
