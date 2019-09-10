@@ -8,6 +8,7 @@ import com.jtzh.szcj.service.RememberMissionService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,6 +20,9 @@ public class RememberMissionController {
 
     @PostMapping("/")
     public ResultObject insert(@RequestBody RememberMission rememberMission) {
+        if (rememberMission.getCreateTime() == null) {
+            rememberMission.setCreateTime(new Date());
+        }
         Integer insertRows = rememberMissionServiceImpl.insert(rememberMission);
         if (insertRows == null || insertRows == 0) {
             return ResultObject.of(false, null, "新增失败");
@@ -59,6 +63,7 @@ public class RememberMissionController {
         List<RememberMission> rememberMissions = rememberMissionServiceImpl.page(rememberMissionSearch);
         Page page = rememberMissionSearch.getPage();
         page.setData(rememberMissions);
+        page.setTotal(rememberMissionServiceImpl.total(rememberMissionSearch));
         return ResultObject.of(true, page, "查询成功");
     }
 

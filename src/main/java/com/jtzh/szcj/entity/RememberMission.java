@@ -16,8 +16,8 @@ public class RememberMission implements Serializable {
 
     private String delflag;
 
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    private Date createTime = new Date();
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 
     private String title;
 
