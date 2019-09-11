@@ -1,5 +1,6 @@
 package com.jtzh.szcj.search;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.jtzh.szcj.common.page.Page;
 
 import java.io.Serializable;
