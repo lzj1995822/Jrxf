@@ -42,13 +42,13 @@ li:hover{
 }
 .topOneLeft{
     display: inline-block;
-    width: 48%;
+    width: 53%;
     vertical-align: top;
 
 }
 .topOneRight{
     display: inline-block;
-    width: 50%;
+    width: 45%;
     vertical-align: top;
     float: right;
     font-size: 24px;
@@ -57,7 +57,7 @@ li:hover{
 .swiper-container {
     width:100%;
     /*高度自定*/
-    height: 350px;
+    height: 400px;
 }
 .swiper-containerTwo {
 
@@ -68,8 +68,8 @@ li:hover{
     margin-top: 0px;
 }
 .topOneRight ul li{
-    height:28px;
-    line-height:28px;
+    height:50px;
+    line-height:50px;
     text-indent:15px;
     background-image:url("../images/newlibj.jpg");
     background-size:7px 32px;
@@ -285,4 +285,8 @@ a{
 }
 .text{
     text-indent: 1em;
+}
+/*分页器点*/
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+    margin: -10px 4px;
 }

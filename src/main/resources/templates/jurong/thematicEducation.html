@@ -30,19 +30,20 @@
             <div class="topOneLeft">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-color:darkorange">Slide 1</div>
-                        <div class="swiper-slide" style="background-color:indianred">Slide 2</div>
-                        <div class="swiper-slide" style="background-color:blue">Slide 3</div>
+                        <div class="swiper-slide"  @click="tiao(topOneData[0].id)"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" style="width: 100%;height: 100%" ></div>
+                        <div class="swiper-slide"  @click="tiao(topOneData[0].id)"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" style="width: 100%;height: 100%" ></div>
+                        <div class="swiper-slide"  @click="tiao(topOneData[0].id)"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" id="imgPic3" style="height: 100%;height: 100%"></div>
+                        <div class="swiper-slide"  @click="tiao(topOneData[0].id)"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" style="width: 100%;height: 100%" ></div>
                     </div>
                     <!-- 如果需要分页器 -->
-                    <div class="swiper-pagination"></div>
+                    <div class="swiper-pagination" style="background-color: rgba(255,255,255,0.2);height: 11%;margin-bottom: -11px"></div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
             </div>
             <div class="topOneRight">
                 <ul>
-                    <li v-for="items in topOneData"><a :href="detailUrl+'?id='+items.id" target="_blank" style="color: #000">{{items.title}}</a>
+                    <li v-for="items in topOneData"><a :href="detailUrl+items.id" target="_blank" style="color: #000">{{items.title}}</a>
                     </li>
                 </ul>
             </div>
@@ -62,7 +63,7 @@
                 </div>
             </div>
             <div class="topTwoDetailRight"><a name="deploy"></a>
-                <div><span><img src="images/newJr/deploy.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div></div>
+                <div><span><img src="images/newJr/deploy.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=deploy'" target="_blank" style=" color: #9baab3;">更多</a></div></div></div>
                 <div class="listBlock">
                     <ul>
                         <li v-for="items in spirit">
@@ -81,7 +82,7 @@
                 </div>
                 <div class="middleOnedetail">
                     <div class="topTwoDetailLeft"><a name="dynamic"></a>
-                        <div><span><img src="images/newJr/dynamic.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div></div>
+                        <div><span><img src="images/newJr/dynamic.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=dynamic'" target="_blank" style=" color: #9baab3;">更多</a></div></div></div>
                         <div class="listBlock">
                             <ul>
                                 <li v-for="items in spirit">
@@ -92,7 +93,7 @@
                         </div>
                     </div>
                     <div class="topTwoDetailRight"><a name="discuss"></a>
-                        <div><span><img src="images/newJr/discuss.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div></div>
+                        <div><span><img src="images/newJr/discuss.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=discuss'" target="_blank" style=" color: #9baab3;">更多</a></div></div></div>
                         <div  class="listBlock">
                             <ul>
                                 <li v-for="items in spirit">
@@ -109,16 +110,16 @@
                     <!--<img src="images/newJr/redTwo.png" style="height: 100%;width: 100%">-->
                 <!--</div>-->
                 <div class="middleTwDetailLeft"><a name="model"></a>
-                    <div><span><img src="images/newJr/model.png" class="titleImg" style="position: relative;width: 600px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div>
+                    <div><span><img src="images/newJr/model.png" class="titleImg" style="position: relative;width: 600px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=model'" target="_blank" style=" color: #9baab3;">更多</a></div></div>
                     </div>
                     <div class="peopleList">
                         <ul>
                             <li v-for="items in personImages" style="white-space:normal;overflow-scrolling: auto">
                                 <div class="pic">
-                                    <a :href="url+items.linkId"><img :src="items.pic"  style="width: 100%;height: 100%"></a>
+                                    <a :href="detailUrl+items.linkId"><img :src="items.pic"  style="width: 100%;height: 100%"></a>
                                 </div>
                                 <div class="tit">
-                                    <a :href="url+items.linkId" style="color: white;text-decoration:none">{{items.name}}</a>
+                                    <a :href="detailUrl+items.linkId" style="color: white;text-decoration:none">{{items.name}}</a>
                                 </div
                                 ><div class="ab">
                                 {{items.ms}}
@@ -128,11 +129,11 @@
                     </div>
                 </div>
                 <div class="middleTwDetailRight"><a name="inspection"></a>
-                    <div><span><img src="images/newJr/inspection.png" class="titleImg" style="position: relative;width: 300px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style="">更多</div></div>
+                    <div><span><img src="images/newJr/inspection.png" class="titleImg" style="position: relative;width: 300px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=inspection'" target="_blank" style=" color: #9baab3;">更多</a></div></div>
                     </div>
                     <div class="inspection">
                         <ul>
-                            <li v-for="items in inspection"><a href="url+items.linkId" style="color: #000000;">{{items.msg}}</a></li>
+                            <li v-for="items in inspection"><a href="detailUrl+items.linkId" style="color: #000000;">{{items.msg}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -178,6 +179,25 @@
             </div>
         </div>
     </div>
+<style>
+    .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+        margin: -10px 4px;
+    }
+    .swiper-pagination-customs{
+        margin-right: 15px;
+    }
+    .swiper-pagination{
+        text-align: right;
+        line-height: 44px;
+    }
+    .swiper-pagination-bullet{
+        margin-right: 15px;
+        background: rgba(246, 246, 246,1);
+    }
+    .swiper-pagination-bullet-active{
+        background: rgba(255, 71, 56, 0.8);
+    }
+</style>
 </body>
 <script>
 var main = new Vue({
@@ -187,12 +207,12 @@ var main = new Vue({
     },
     data:function() {
     return {
-        detailUrl:"http://"+ window.location.host+'/templates/jurong/thematicDetail.html',
+        detailUrl:"http://"+ window.location.host+'/templates/jurong/thematicDetail.html?id=',
         listUrl:"http://"+ window.location.host+'/templates/jurong/thematicList.html',
         baseUrl:"http://"+ window.location.host,
         menus:[{text:'中央精神',name:'spirit'},{text:'市委部署',name:'deploy'},{text:'工作动态',name:'dynamic'},{text:'学习研讨',name:'discuss'},{text:'检视整改',name:'inspection'},{text:'优秀楷模',name:'model'}],
         activeStyle:[{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'}],
-        topOneData:['对标先进践初心 省委政政法委启政法委启政法委启政法委启政法委启法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','11111111111111111','1111111111111111','11111111111111','11111111111111111111'],
+        topOneData:[],
         bottomImgs:[{src:'images/newJr/linkOne.jpg',url:'http://www.12371.cn/special/xxzd/'},{src:'images/newJr/linkTwo.jpg',url:'http://www.12371.cn/special/xg19thjs/'},{src:'images/newJr/linkThree.jpg',url:'http://lxyz.12371.cn/'},{src:'images/newJr/linkFour.jpg',url:'http://www.12371.cn/special/dzby/'},
             {src:'images/newJr/linkFive.jpg',url:'http://www.jsxf.gov.cn/jsxf/'},
             {src:'images/newJr/linkSeven.jpg',url:'https://js.xuexi.cn/'}],
@@ -222,9 +242,21 @@ var main = new Vue({
                 }
             }
 
+        },
+        tiao:function (val) {
+            window.location.href= this.detailUrl + val
+        },
+        imgUrl:function(val){
+            return {
+                background:'url('+val+')',
+                backgroundRepeat:'no-repeat'
+            }
         }
     },
     mounted:function(){
+        document.getElementById('imgPic3').src = 'http://p4.img.cctvpic.com/photoAlbum/page/performance/img/2019/7/22/1563763247901_808.jpg'
+        console.log(document.getElementById('imgPic3').src,111)
+
         var mySwiper = new Swiper ('.swiper-container', {
             direction: 'horizontal', // 垂直切换选项
             loop: true, // 循环模式选项
@@ -237,7 +269,20 @@ var main = new Vue({
             // 如果需要分页器
             pagination: {
                 el: '.swiper-pagination',
-                clickable:true
+                type: 'custom',
+                clickable:true,
+                renderCustom: function (swiper, current, total) {
+                    var customPaginationHtml = "";
+                    for(var i = 0; i < total; i++) {
+                        //判断哪个分页器此刻应该被激活
+                        if(i == (current - 1)) {
+                            customPaginationHtml += '<span style="float: left;line-height: 44px;color: white;font-size: 19px;margin-left: 10px">'+current+'宋霭大祭司</span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>';
+                        } else {
+                            customPaginationHtml += '<span class="swiper-pagination-bullet"></span>';
+                        }
+                    }
+                    return customPaginationHtml;
+                }
             }
         })
 
@@ -270,10 +315,11 @@ var main = new Vue({
             url: this.baseUrl+'/rememberMission/page',
             data: {
                 type:'首页头条',
-                page:{page:0,pageSize:8}
+                page:{page:0,pageSize:6}
             }
         }).then(function(data){
             _this.topOneData = data.data.obj.data
+            console.log(_this.topOneData[0].pic)
         });
     }
 })
