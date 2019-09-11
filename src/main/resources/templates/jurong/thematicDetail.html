@@ -18,6 +18,18 @@
         padding: 0;
         margin: 0;
     }
+    a {
+        text-decoration: none;
+    }
+    .info {
+        display: flex;
+        color: #7f7f7f;
+        margin-bottom: 40px;
+    }
+    .content {
+        margin: 0 auto;
+        text-align: justify;
+    }
 </style>
 <body>
 <div id="main" >
@@ -29,6 +41,22 @@
         <span class="menuItems" @click="menuActive(items,index)" ><a :href="'#'+items.name" :style="activeStyle[index]">{{items.text}}</a></span>
     </template>
 </div>
+    <div class="list-content">
+        <div class="bar">
+            <span>当前位置:</span>
+            <span>首页</span>
+            <span> / {{activeMenu.text}}</span>
+        </div>
+        <p style="font-size: 32px;margin: 15px 0">
+            {{currentNew.title}}
+        </p>
+        <div class="info">
+            <div style="flex: 1;">发布人:{{currentNew.author}}</div>
+            <div style="flex: 1;text-align: right">发布时间:{{currentNew.createTime}}</div>
+        </div>
+        <div class="content" v-html="currentNew.content">
+        </div>
+    </div>
 </div>
 </body>
 <script>
@@ -39,23 +67,47 @@
         },
         data:function() {
             return {
+                baseUrl:"http://"+ window.location.host,
                 menus:[{text:'中央精神',name:'spirit'},{text:'市委部署',name:'deploy'},{text:'工作动态',name:'dynamic'},{text:'学习研讨',name:'discuss'},{text:'检视整改',name:'inspection'},{text:'优秀楷模',name:'model'}],
                 activeStyle:[{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'}],
-
+                activeMenu: {},
+                currentNew: {},
+                listUrl:"http://"+ window.location.host+'/templates/jurong/thematicList.html',
 
             }
         },
         methods:{
             menuActive: function (val,index){
+                this.activeMenu = val;
+                window.open(this.listUrl + '?type=' + val.name)
 
-
+            },
+            loadData: function (id) {
+                var self = this;
+                axios({
+                    method: 'get',
+                    url: this.baseUrl + '/rememberMission/' + id
+                }).then(function (res) {
+                    if (res.data.result) {
+                        self.currentNew = res.data.obj;
+                    }
+                })
             }
         },
         mounted:function(){
 
         },
         created:function(){
-
+            var self = this;
+            var url = window.location.href;
+            var active = url.split('?')[1].split('&')[0].split('=')[1];
+            this.menus.forEach(function(item) {
+                if (item.name === active) {
+                    self.activeMenu = item;
+                }
+            })
+            var id = url.split('?')[1].split('&')[1].split('=')[1];
+            this.loadData(id);
         }
     })
 </script>
@@ -90,6 +142,13 @@
         margin-left: 66px;
         margin-right: 66px;
         cursor: pointer;
+    }
+    .list-content {
+        width: 900px;
+        margin: 0 auto;
+    }
+    .bar {
+        margin: 20px 0;
     }
 </style>
 </html>
