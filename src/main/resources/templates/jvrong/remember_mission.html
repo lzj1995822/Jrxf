@@ -61,7 +61,7 @@
             </div>
             <div style="clear:both;"></div>
             <div style="margin:20px 0px;">
-                名称<input type="text" value="" name="name" placeholder="输入名称" id="name"/>
+                标题<input type="text" value="" name="name" placeholder="输入标题" id="name"/>
                 <input type="button" value="查询" style="height:30px;" id="search"/>
             </div>
         </div>
@@ -163,8 +163,10 @@
             <td>{{data[i].type}}</td>
             <td>{{data[i].author}}</td>
             <td>{{data[i].createTime}}</td>
-            <a href="javascript:void(0);" on-click="xg" class="btn btn-white btn-sm" data-toggle="tab" href="#home2">修改</a>
-            <a class="J_ajax_del btn btn-white btn-sm" on-click="sc" href="javascript:void(0);">删除</a>
+            <td>
+                <a href="javascript:void(0);" on-click="xg" class="btn btn-white btn-sm" data-toggle="tab" href="#home2">修改</a>
+                <a class="J_ajax_del btn btn-white btn-sm" on-click="sc" href="javascript:void(0);">删除</a>
+            </td>
         </tr>
         {{/each}}
 		</script>
