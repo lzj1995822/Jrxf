@@ -34,12 +34,7 @@
             <div class="topOneLeft">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"  @click="tiao(topOneData[0].id)" style="cursor: pointer"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" id="imgPic1" style="width: 100%;height: 100%" ></div>
-                        <div class="swiper-slide"  @click="tiao(topOneData[1].id)" style="cursor: pointer"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" id="imgPic2" style="width: 100%;height: 100%" ></div>
-                        <div class="swiper-slide"  @click="tiao(topOneData[2].id)" style="cursor: pointer"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" id="imgPic3" style="width: 100%;height: 100%"></div>
-                        <div class="swiper-slide"  @click="tiao(topOneData[3].id)" style="cursor: pointer"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" id="imgPic4" style="width: 100%;height: 100%" ></div>
-                        <div class="swiper-slide"  @click="tiao(topOneData[4].id)" style="cursor: pointer"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" id="imgPic5" style="width: 100%;height: 100%" ></div>
-                        <div class="swiper-slide"  @click="tiao(topOneData[5].id)" style="cursor: pointer"><img src="http://p3.img.cctvpic.com/photoAlbum/page/performance/img/2019/6/12/1560307471957_689.jpg" id="imgPic6" style="width: 100%;height: 100%" ></div>
+                        <div class="swiper-slide" v-for="item in topOneData"  @click="tiao(item.id)" style="cursor: pointer"><img :src="'http://www.jrxf.gov.cn/file/' + item.pic" id="imgPic1" style="width: 100%;height: 100%" ></div>
                     </div>
                     <!-- 如果需要分页器 -->
                     <div class="swiper-pagination" style="background-color: rgba(124,150,170,0.3);height: 11%;margin-bottom: -11px"></div>
@@ -262,7 +257,7 @@ var main = new Vue({
 
         },
         tiao:function (val) {
-            window.open(this.detailUrl + val);
+            window.open(this.detailUrl + "?type=homeHeader&id=" + val);
         },
         linkOpen:function(val){
             window.open( val);
@@ -285,13 +280,6 @@ var main = new Vue({
             }
         }).then(function(data){
             _this.topOneData = data.data.obj.data
-
-        document.getElementById('imgPic1').src = _this.fileUrl+_this.topOneData[0].pic
-        document.getElementById('imgPic2').src = _this.fileUrl+_this.topOneData[1].pic
-        document.getElementById('imgPic3').src = _this.fileUrl+_this.topOneData[2].pic
-        document.getElementById('imgPic4').src = _this.fileUrl+_this.topOneData[3].pic
-        document.getElementById('imgPic5').src = _this.fileUrl+_this.topOneData[4].pic
-        document.getElementById('imgPic6').src = _this.fileUrl+_this.topOneData[5].pic
 
         var mySwiper = new Swiper ('.swiper-container', {
             direction: 'horizontal', // 垂直切换选项
