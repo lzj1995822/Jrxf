@@ -11,7 +11,28 @@ li{
 }
 li:hover{
     cursor: pointer;
+    color: #D84545;
 }
+
+/*链接样式*/
+.linkA{
+    display: block;
+    overflow: hidden;
+    color: #000;
+    width:96%;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+ }
+.linkA:hover{
+    color: #D84545;
+}
+.moreA{
+    color: #9baab3;
+}
+.moreA:hover{
+    color: #D84545;
+}
+
 .header{
     width:100%;
     /*高度自定*/
@@ -48,10 +69,10 @@ li:hover{
 }
 .topOneRight{
     display: inline-block;
-    width: 45%;
+    width: 42%;
     vertical-align: top;
     float: right;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
 }
 .swiper-container {
@@ -214,7 +235,6 @@ li:hover{
 }
 .peopleList ul{
     list-style: none;
-    margin-left: -33px;
 }
 .peopleList li{
     width: 180px;
@@ -258,7 +278,6 @@ li:hover{
     padding-left: 26px;
     height: 44px;
     line-height: 44px;
-    margin-left: -44px;
     overflow: hidden;
 }
 a{
@@ -273,8 +292,8 @@ a{
 }
 .listBlock ul li{
     font-size: 20px;
-    height: 42px;
-    line-height: 42px;
+    height: 50px;
+    line-height: 50px;
     margin: 8px;
 }
 .line{
@@ -285,6 +304,7 @@ a{
 }
 .text{
     text-indent: 1em;
+    line-height: 50px;
 }
 /*分页器点*/
 .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
