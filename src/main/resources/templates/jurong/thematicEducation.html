@@ -26,7 +26,7 @@
             <img src="images/newJr/banner.png" style="width: 100%;height: 100%">
         </div>
         <div class="menu">
-            <template v-for="(items,index) in menus">
+            <template v-for="(items,index) in menus" v-if="items.isShow">
                 <span class="menuItems" @click="menuActive(items,index)" ><a :href="'#'+items.name" :style="activeStyle[index]">{{items.text}}</a></span>
             </template>
         </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="topOneRight">
                 <ul>
-                    <li v-for="items in topOneData"><a :href="detailUrl+items.id" target="_blank" class="linkA">{{items.title}}</a>
+                    <li v-for="items in topOneData"><a :href="detailUrl + '?type=homeHeader&id=' +items.id" target="_blank" class="linkA">{{items.title}}</a>
                     </li>
                 </ul>
             </div>
@@ -63,7 +63,7 @@
                     <ul>
                         <li v-for="items in spirit">
                             <div class="line"></div>
-                            <div class="text"><a :href="detailUrl+items.id" target="_blank" class="linkA">{{items.title}}</a></div>
+                            <div class="text"><a :href="detailUrl+ '?type=spirit&id=' +items.id" target="_blank" class="linkA">{{items.title}}</a></div>
                         </li>
                     </ul>
                 </div>
@@ -74,7 +74,7 @@
                     <ul>
                         <li v-for="items in deploy">
                             <div class="line"></div>
-                            <div class="text"><a :href="detailUrl+items.id" target="_blank" class="linkA">{{items.title}}</a></div>
+                            <div class="text"><a :href="detailUrl+'?type=deploy&id=' + items.id" target="_blank" class="linkA">{{items.title}}</a></div>
                         </li>
                     </ul>
                 </div>
@@ -93,7 +93,7 @@
                             <ul>
                                 <li v-for="items in dynamic">
                                     <div class="line"></div>
-                                    <div class="text"><a :href="detailUrl+items.id" target="_blank" class="linkA">{{items.title}}</a></div>
+                                    <div class="text"><a :href="detailUrl+'?type=dynamic&id=' +  items.id" target="_blank" class="linkA">{{items.title}}</a></div>
                                 </li>
                             </ul>
                         </div>
@@ -104,7 +104,7 @@
                             <ul>
                                 <li v-for="items in discuss">
                                     <div class="line"></div>
-                                    <div class="text"><a :href="detailUrl+items.id" target="_blank" class="linkA">{{items.title}}</a></div>
+                                    <div class="text"><a :href="detailUrl+'?type=discuss&id=' + items.id" target="_blank" class="linkA">{{items.title}}</a></div>
                                 </li>
                             </ul>
                         </div>
@@ -122,10 +122,10 @@
                         <ul>
                             <li v-for="items in personImages" style="white-space:normal;overflow-scrolling: auto">
                                 <div class="pic">
-                                    <a :href="detailUrl+items.id" target="_blank"><img :src="fileUrl+items.pic"  style="width: 100%;height: 100%"></a>
+                                    <a :href="detailUrl+'?type=model&id='+items.id" target="_blank"><img :src="fileUrl+items.pic"  style="width: 100%;height: 100%"></a>
                                 </div>
                                 <div class="tit">
-                                    <a :href="detailUrl+items.id" style="color: white;text-decoration:none" target="_blank">{{items.title.split('&')[0]}}</a>
+                                    <a :href="detailUrl+'?type=model&id='+items.id" style="color: white;text-decoration:none" target="_blank">{{items.title.split('&')[0]}}</a>
                                 </div
                                 ><div class="ab">
                                 {{items.title.split('&')[1]}}
@@ -139,7 +139,7 @@
                     </div>
                     <div class="inspection">
                         <ul>
-                            <li v-for="items in inspection"><a :href="detailUrl+items.id" class="linkA" target="_blank">{{items.title}}</a></li>
+                            <li v-for="items in inspection"><a :href="detailUrl+'?type=inspection&id='+items.id" class="linkA" target="_blank">{{items.title}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -178,13 +178,13 @@
             <div class="linksHeader"><img src="images/newJr/link.png" style="width: 100%"></div>
             <div class="linksDetail">
                 <div style="display: inline-block">
-                    <button class="linkBtn" @click="linkOpen('http://www.jschina.com.cn/')">中国江苏网</button>
+                    <button class="linkBtn" @click="linkOpen('http://jsnews.jschina.com.cn/zt2019/chuxin/')">江苏省委“不忘初心，牢记使命”主题教育官方网站</button>
                 </div>
                 <div style="display: inline-block">
-                    <button class="linkBtn" @click="linkOpen('http://www.jsxf.gov.cn/zt/bwcxljsm/')">“不忘初心，牢记使命”主题教育官方网站</button>
+                    <button class="linkBtn" @click="linkOpen('http://www.jsxf.gov.cn/zt/bwcxljsm/')">中央“不忘初心，牢记使命”主题教育官方网站</button>
                 </div>
                 <div style="display: inline-block">
-                    <button class="linkBtn" @click="linkOpen('http://www.zhenjiang.gov.cn/')">镇江市委网站</button>
+                    <button class="linkBtn" @click="linkOpen('http://www.zjdj.gov.cn/Net/al?id=3380769717273600')">镇江市委“不忘初心，牢记使命”主题教育官方网站</button>
                 </div>
             </div>
         </div>
@@ -220,11 +220,11 @@ var main = new Vue({
     },
     data:function() {
     return {
-        detailUrl:"http://"+ window.location.host+'/templates/jurong/thematicDetail.html?id=',
+        detailUrl:"http://"+ window.location.host+'/templates/jurong/thematicDetail.html',
         listUrl:"http://"+ window.location.host+'/templates/jurong/thematicList.html',
         baseUrl:"http://"+ window.location.host,
         fileUrl:"http://"+ window.location.host+'/file/',
-        menus:[{text:'中央精神',name:'spirit'},{text:'市委部署',name:'deploy'},{text:'工作动态',name:'dynamic'},{text:'学习研讨',name:'discuss'},{text:'检视整改',name:'inspection'},{text:'优秀楷模',name:'model'}],
+        menus:[{text: '首页头条', name: 'homeHeader', isShow: false},{text:'中央精神',name:'spirit', isShow: true},{text:'市委部署',name:'deploy', isShow: true},{text:'工作动态',name:'dynamic', isShow: true},{text:'学习研讨',name:'discuss', isShow: true},{text:'检视整改',name:'inspection', isShow: true},{text:'优秀楷模',name:'model', isShow: true}],
         activeStyle:[{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'}],
         topOneData:['对标先进践初心 省委政政法委启政法委启政法委启政法委启政法委启法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','11111111111111111','1111111111111111','11111111111111','11111111111111111111'],
         bottomImgs:[

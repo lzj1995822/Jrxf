@@ -45,7 +45,7 @@
     <img src="images/newJr/banner.png" style="width: 100%;height: 100%">
 </div>
 <div class="menu">
-    <template v-for="(items,index) in menus">
+    <template v-for="(items,index) in menus" v-if="items.isShow">
         <span class="menuItems" @click="menuActive(items,index)" ><a :href="'#'+items.name" :style="activeStyle[index]">{{items.text}}</a></span>
     </template>
 </div>
@@ -79,7 +79,7 @@
         data:function() {
             return {
                 baseUrl:"http://"+ window.location.host,
-                menus:[{text:'中央精神',name:'spirit'},{text:'市委部署',name:'deploy'},{text:'工作动态',name:'dynamic'},{text:'学习研讨',name:'discuss'},{text:'检视整改',name:'inspection'},{text:'优秀楷模',name:'model'}],
+                menus:[{text: '首页头条', name: 'homeHeader', isShow: false},{text:'中央精神',name:'spirit', isShow: true},{text:'市委部署',name:'deploy', isShow: true},{text:'工作动态',name:'dynamic', isShow: true},{text:'学习研讨',name:'discuss', isShow: true},{text:'检视整改',name:'inspection', isShow: true},{text:'优秀楷模',name:'model', isShow: true}],
                 activeStyle:[{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'}],
                 activeMenu: {},
                 currentNew: {},
