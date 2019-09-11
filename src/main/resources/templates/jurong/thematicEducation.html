@@ -154,8 +154,12 @@
             <div class="booksDetail">
                 <div class="swiper-containerTwo">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="items in bottomImgs"><a :href="items.url" target="_blank"><img :src="items.src" style="width: 99%"></a></div>
-
+                        <div class="swiper-slide" v-for="items in bottomImgs">
+                            <a :href="items.url" target="_blank">
+                                <img :src="items.src" style="width: 99%">
+                                <p style="background-color: #ffffff;color: #555555;position: relative;top: -5px;height: 25px;">{{items.title}}</p>
+                            </a>
+                        </div>
                     </div>
                     <!-- 如果需要分页器 -->
                     <!--<div class="swiper-pagination"></div>-->
@@ -197,9 +201,13 @@ var main = new Vue({
         menus:[{text:'中央精神',name:'spirit'},{text:'市委部署',name:'deploy'},{text:'工作动态',name:'dynamic'},{text:'学习研讨',name:'discuss'},{text:'检视整改',name:'inspection'},{text:'优秀楷模',name:'model'}],
         activeStyle:[{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'},{color:'red'}],
         topOneData:['对标先进践初心 省委政政法委启政法委启政法委启政法委启政法委启法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','对标先进践初心 省委政法委启动“跟班先进找差距”活动','11111111111111111','1111111111111111','11111111111111','11111111111111111111'],
-        bottomImgs:[{src:'images/newJr/linkOne.jpg',url:'http://www.12371.cn/special/xxzd/'},{src:'images/newJr/linkTwo.jpg',url:'http://www.12371.cn/special/xg19thjs/'},{src:'images/newJr/linkThree.jpg',url:'http://lxyz.12371.cn/'},{src:'images/newJr/linkFour.jpg',url:'http://www.12371.cn/special/dzby/'},
-            {src:'images/newJr/linkFive.jpg',url:'http://www.jsxf.gov.cn/jsxf/'},
-            {src:'images/newJr/linkSeven.jpg',url:'https://js.xuexi.cn/'}],
+        bottomImgs:[
+            {title: '学习平台', src:'images/newJr/linkOne.jpg',url:'http://www.12371.cn/special/xxzd/'},
+            {title: '领航新时代', src:'images/newJr/linkTwo.jpg',url:'http://www.12371.cn/special/xg19thjs/'},
+            {title: '两学一做', src:'images/newJr/linkThree.jpg',url:'http://lxyz.12371.cn/'},
+            {title: '榜样', src:'images/newJr/linkFour.jpg',url:'http://www.12371.cn/special/dzby/'},
+            {title: '江苏先锋', src:'images/newJr/linkFive.jpg',url:'http://www.jsxf.gov.cn/jsxf/'},
+            {title: '思政微课堂', src:'images/newJr/linkSeven.jpg',url:'https://js.xuexi.cn/'}],
         //任务信息
         personImages:[{pic:'images/1.jpg',name:'X XX',ms:' 习近平总书记指出，周恩来同志半个多世纪奋斗的人生历程，是中国共产党不忘初心、牢记使命历史的一个生动缩影',linkId:'78945612'},{},{}],
         //检视整改
@@ -219,7 +227,7 @@ var main = new Vue({
         menuActive: function (val,index){
             for( var i in this.activeStyle){
                 if(i == index){
-                    this.activeStyle[i].color = 'black'
+                    this.activeStyle[i].color = '#d1d23a'
                 }else {
                     this.activeStyle[i].color = 'red'
 
