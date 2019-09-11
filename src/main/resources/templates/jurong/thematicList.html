@@ -26,6 +26,13 @@
     a{
         text-decoration:none
     }
+    .tail{
+        padding: 50px 20px;
+        text-align: center;
+        background: #cb0100;
+        color: white;
+        font-size: 20px;
+    }
 </style>
 <body>
 <div id="main" >
@@ -57,7 +64,7 @@
         </ul>
         <br/>
         <el-pagination
-                style="float: right"
+                style="float: right;"
                 background
                 layout="prev, pager, next"
                 :current-page="currentPage"
@@ -66,7 +73,10 @@
                 @current-change="loadData">
         </el-pagination>
     </div>
-
+    <div style="margin-bottom: 60px;"></div>
+    <div class="tail">
+        <div>主办单位：中国共产党句容市组织部      &nbsp; &nbsp; &nbsp; 网站备案编号：苏ICP备12016583号-1 </div>
+    </div>
 </div>
 </body>
 <script>
