@@ -298,7 +298,7 @@ a{
 .line{
     width: 96%;
     margin: 0px auto;
-    border: 1.5px solid rgba(111,111,111,0.2);
+    border: .5px solid rgba(111,111,111,0.2);
 
 }
 .text{
@@ -320,4 +320,7 @@ a{
 /*分页器点*/
 .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
     margin: -10px 4px;
+}
+button {
+    cursor: pointer;
 }
