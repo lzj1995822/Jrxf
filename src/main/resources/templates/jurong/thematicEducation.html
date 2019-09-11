@@ -286,12 +286,12 @@ var main = new Vue({
         }).then(function(data){
             _this.topOneData = data.data.obj.data
 
-        document.getElementById('imgPic1').src = _this.topOneData[0].pic
-        document.getElementById('imgPic2').src = _this.topOneData[1].pic
-        document.getElementById('imgPic3').src = _this.topOneData[2].pic
-        document.getElementById('imgPic4').src = _this.topOneData[3].pic
-        document.getElementById('imgPic5').src = _this.topOneData[4].pic
-        document.getElementById('imgPic6').src = _this.topOneData[5].pic
+        document.getElementById('imgPic1').src = _this.fileUrl+_this.topOneData[0].pic
+        document.getElementById('imgPic2').src = _this.fileUrl+_this.topOneData[1].pic
+        document.getElementById('imgPic3').src = _this.fileUrl+_this.topOneData[2].pic
+        document.getElementById('imgPic4').src = _this.fileUrl+_this.topOneData[3].pic
+        document.getElementById('imgPic5').src = _this.fileUrl+_this.topOneData[4].pic
+        document.getElementById('imgPic6').src = _this.fileUrl+_this.topOneData[5].pic
 
         var mySwiper = new Swiper ('.swiper-container', {
             direction: 'horizontal', // 垂直切换选项
