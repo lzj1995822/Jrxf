@@ -178,15 +178,18 @@
             <div class="linksHeader"><img src="images/newJr/link.png" style="width: 100%"></div>
             <div class="linksDetail">
                 <div style="display: inline-block">
-                    <button class="linkBtn">中国江苏网</button>
+                    <button class="linkBtn" @click="linkOpen('http://www.jschina.com.cn/')">中国江苏网</button>
                 </div>
                 <div style="display: inline-block">
-                    <button class="linkBtn">“不忘初心，牢记使命”主题教育官方网站</button>
+                    <button class="linkBtn" @click="linkOpen('http://www.jsxf.gov.cn/zt/bwcxljsm/')">“不忘初心，牢记使命”主题教育官方网站</button>
                 </div>
                 <div style="display: inline-block">
-                    <button class="linkBtn">镇江市委网站</button>
+                    <button class="linkBtn" @click="linkOpen('http://www.zhenjiang.gov.cn/')">镇江市委网站</button>
                 </div>
             </div>
+        </div>
+        <div class="tail">
+            <div>中国共产党句容市组织部 版权所有      &nbsp; &nbsp; &nbsp; 网络备案：苏ICP备12016583号-1 </div>
         </div>
     </div>
 <style>
@@ -260,6 +263,9 @@ var main = new Vue({
         },
         tiao:function (val) {
             window.open(this.detailUrl + val);
+        },
+        linkOpen:function(val){
+            window.open( val);
         },
         imgUrl:function(val){
             return {
