@@ -17,6 +17,10 @@ public class CheckoutFileType {
     static {
         // images
         mFileTypes.put("FFD8FFE0", ".jpg");
+        mFileTypes.put("FFD8FFE1", ".jpg");
+        mFileTypes.put("FFD8FFE2", ".jpg");
+        mFileTypes.put("FFD8FFE3", ".jpg");
+        mFileTypes.put("FFD8FFE8", ".jpg");
         mFileTypes.put("89504E47", ".png");
         mFileTypes.put("47494638", ".gif");
     }
