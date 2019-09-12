@@ -329,7 +329,7 @@
                 param.pic = p;
                 param.createTime = $("#fbsj").val();
                 param.content = UE.getEditor('editor').getContent();
-                param.author = window.parent.location.href.split('?')[1].split('=')[1] || ''
+                param.author = decodeURI(decodeURI(window.parent.location.href)).split('?')[1].split('=')[1] || ''
                 if(id){
                     if(!p){
                         param.pic = $("#goodimage").attr("code")

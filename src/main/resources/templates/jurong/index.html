@@ -444,7 +444,7 @@ $("#mapctr").click(function(){
                             <div style="height:122px; width:250px; overflow:hidden; border:1px #D8D8D6 solid; background-repeat:repeat-x;">
                               <!--用户登陆 Begin-->
                                 <h4>欢迎 组织部</h4>
-                                <a href="../jvrong/index.html?u=admin"  target="_blank">登陆后台管理系统</a>
+                                <a id="enterLink" href="../jvrong/index.html?u=admin"  target="_blank">登陆后台管理系统</a>
                               <!--用户登陆 End-->
                             </div>
                           </div>
@@ -522,6 +522,7 @@ $("#mapctr").click(function(){
                  if(data.result){
                      $("#loginPage").hide();
                      $("#welcomePage").show();
+                     $("#enterLink").attr("href", "../jvrong/index.html?u=" + param.zh)
                      $.cookie('jurong-xf', data.obj, { expires: 7  ,path: '/'})
                  }else{
                      alert("账号密码错误！")
