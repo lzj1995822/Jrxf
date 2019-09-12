@@ -56,7 +56,12 @@
             <span> / {{activeMenu.text}}</span>
         </div>
         <p style="font-size: 32px;margin: 15px 0">
-            {{currentNew.title}}
+            <template v-if="activeMenu.name != 'model'">
+                {{currentNew.title}}
+            </template>
+            <template v-else>
+                {{currentNew.title.split('&')[0]}}
+            </template>
         </p>
         <div class="info">
             <div style="flex: 1;">发布人:{{currentNew.author}}</div>

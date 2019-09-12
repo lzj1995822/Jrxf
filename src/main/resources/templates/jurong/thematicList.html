@@ -56,8 +56,12 @@
         </div>
         <ul>
             <li :key="item.id" v-for="item in listData" @click="toDetail(item.id)">
-                <div style="display: flex;padding: 15px 0;border-bottom: #cccccc 1px solid">
+                <div v-if="activeMenu.name != 'model'" style="display: flex;padding: 15px 0;border-bottom: #cccccc 1px solid">
                     <div style="flex: 5;font-size: 22px;">{{item.title}}</div>
+                    <div style="flex: 1;text-align: right;font-size: 16px;color: #a8a8a8;position: relative;top: 10px">{{item.createTime}}</div>
+                </div>
+                <div v-else style="display: flex;padding: 15px 0;border-bottom: #cccccc 1px solid">
+                    <div style="flex: 5;font-size: 22px;">{{item.title.split('&')[0]}}</div>
                     <div style="flex: 1;text-align: right;font-size: 16px;color: #a8a8a8;position: relative;top: 10px">{{item.createTime}}</div>
                 </div>
             </li>

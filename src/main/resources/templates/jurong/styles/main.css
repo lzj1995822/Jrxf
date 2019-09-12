@@ -35,12 +35,13 @@ li:hover{
 
 .header{
     width:100%;
+    min-width: 1300px;
     /*高度自定*/
 }
 .menu{
     margin-top: -3px;
     width:100%;
-    min-width: 1300px;
+    min-width: 1350px;
     line-height: 60px;
     vertical-align: middle;
     background: url("../images/newJr/menu.png") no-repeat;

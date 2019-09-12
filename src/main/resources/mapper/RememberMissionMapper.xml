@@ -29,7 +29,7 @@
       title = #{title,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
-      author = #{pic,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
       `type` = #{type,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
