@@ -30,156 +30,160 @@
                 <span class="menuItems" @click="menuActive(items,index)" ><a :href="'#'+items.name" :style="activeStyle[index]">{{items.text}}</a></span>
             </template>
         </div>
-        <div class="topOne">
-            <div class="topOneLeft">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="item in topOneData"  @click="tiao(item.id)" style="cursor: pointer"><img :src="'http://www.jrxf.gov.cn/file/' + item.pic" id="imgPic1" style="width: 100%;height: 100%" ></div>
+        <div style="width: 1300px;margin: 0 auto;">
+            <div class="topOne">
+                <div class="topOneLeft">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for="item in topOneData"  @click="tiao(item.id)" style="cursor: pointer"><img :src="'http://www.jrxf.gov.cn/file/' + item.pic" id="imgPic1" style="width: 100%;height: 100%" ></div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination" style="background-color: rgba(124,150,170,0.3);height: 11%;margin-bottom: -11px"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
-                    <!-- 如果需要分页器 -->
-                    <div class="swiper-pagination" style="background-color: rgba(124,150,170,0.3);height: 11%;margin-bottom: -11px"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
                 </div>
-            </div>
-            <div class="topOneRight">
-                <ul>
-                    <li v-for="items in topOneData"><a :href="detailUrl + '?type=homeHeader&id=' +items.id" target="_blank" class="linkA">{{items.title}}</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="topTwo">
-            <!--<div class="topTwoHeader"></div>-->
-            <div>
-            <div class="topTwoDetailLeft"><a name="spirit"></a>
-                <div><span><img src="images/newJr/spirit.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=spirit'" target="_blank" class="moreA">更多</a></div></div></div>
-                <div class="listBlock">
+                <div class="topOneRight">
                     <ul>
-                        <li v-for="items in spirit">
-                            <div class="line"></div>
-                            <div class="text"><a :href="detailUrl+ '?type=spirit&id=' +items.id" target="_blank" class="linkA">{{items.title}}</a></div>
+                        <li v-for="items in topOneData"><a :href="detailUrl + '?type=homeHeader&id=' +items.id" target="_blank" class="linkA">{{items.title}}</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="topTwoDetailRight"><a name="deploy"></a>
-                <div><span><img src="images/newJr/deploy.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=deploy'" target="_blank" class="moreA">更多</a></div></div></div>
-                <div class="listBlock">
-                    <ul>
-                        <li v-for="items in deploy">
-                            <div class="line"></div>
-                            <div class="text"><a :href="detailUrl+'?type=deploy&id=' + items.id" target="_blank" class="linkA">{{items.title}}</a></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="middle">
-            <div class="middleOne">
-                <div class="middleOneHeader">
-                    <img src="images/newJr/redOne.png" style="height: 100%;width: 100%">
-                </div>
-                <div class="middleOnedetail">
-                    <div class="topTwoDetailLeft"><a name="dynamic"></a>
-                        <div><span><img src="images/newJr/dynamic.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=dynamic'" target="_blank" class="moreA">更多</a></div></div></div>
-                        <div class="listBlock">
-                            <ul>
-                                <li v-for="items in dynamic">
-                                    <div class="line"></div>
-                                    <div class="text"><a :href="detailUrl+'?type=dynamic&id=' +  items.id" target="_blank" class="linkA">{{items.title}}</a></div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="topTwoDetailRight"><a name="discuss"></a>
-                        <div><span><img src="images/newJr/discuss.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=discuss'" target="_blank" class="moreA">更多</a></div></div></div>
-                        <div  class="listBlock">
-                            <ul>
-                                <li v-for="items in discuss">
-                                    <div class="line"></div>
-                                    <div class="text"><a :href="detailUrl+'?type=discuss&id=' + items.id" target="_blank" class="linkA">{{items.title}}</a></div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="middleTwo">
-                <!--<div class="middleTwoHeader">-->
-                    <!--<img src="images/newJr/redTwo.png" style="height: 100%;width: 100%">-->
-                <!--</div>-->
-                <div class="middleTwDetailLeft"><a name="model"></a>
-                    <div><span><img src="images/newJr/model.png" class="titleImg" style="position: relative;width: 600px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=model'" target="_blank" class="moreA">更多</a></div></div>
-                    </div>
-                    <div class="peopleList">
+            <div class="topTwo">
+                <!--<div class="topTwoHeader"></div>-->
+                <div>
+                <div class="topTwoDetailLeft"><a name="spirit"></a>
+                    <div><span><img src="images/newJr/spirit.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=spirit'" target="_blank" class="moreA">更多</a></div></div></div>
+                    <div class="listBlock">
                         <ul>
-                            <li v-for="items in personImages" style="white-space:normal;overflow-scrolling: auto">
-                                <div class="pic">
-                                    <a :href="detailUrl+'?type=model&id='+items.id" target="_blank"><img :src="fileUrl+items.pic"  style="width: 100%;height: 100%"></a>
-                                </div>
-                                <div class="tit">
-                                    <a :href="detailUrl+'?type=model&id='+items.id" style="color: white;text-decoration:none" target="_blank">{{items.title.split('&')[0]}}</a>
-                                </div
-                                ><div class="ab">
-                                {{items.title.split('&')[1]}}
-                            </div>
+                            <li v-for="items in spirit">
+                                <div class="line"></div>
+                                <div class="text"><a :href="detailUrl+ '?type=spirit&id=' +items.id" target="_blank" class="linkA">{{items.title}}</a></div>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="middleTwDetailRight"><a name="inspection"></a>
-                    <div><span><img src="images/newJr/inspection.png" class="titleImg" style="position: relative;width: 300px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=inspection'" target="_blank" class="moreA">更多</a></div></div>
-                    </div>
-                    <div class="inspection">
+                <div class="topTwoDetailRight"><a name="deploy"></a>
+                    <div><span><img src="images/newJr/deploy.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=deploy'" target="_blank" class="moreA">更多</a></div></div></div>
+                    <div class="listBlock">
                         <ul>
-                            <li v-for="items in inspection"><a :href="detailUrl+'?type=inspection&id='+items.id" class="linkA" target="_blank">{{items.title}}</a></li>
+                            <li v-for="items in deploy">
+                                <div class="line"></div>
+                                <div class="text"><a :href="detailUrl+'?type=deploy&id=' + items.id" target="_blank" class="linkA">{{items.title}}</a></div>
+                            </li>
                         </ul>
                     </div>
                 </div>
+                </div>
+            </div>
+            <div class="middle">
+                <div class="middleOne">
+                    <div class="middleOneHeader">
+                        <img src="images/newJr/redOne.png" style="height: 100%;width: 100%">
+                    </div>
+                    <div class="middleOnedetail">
+                        <div class="topTwoDetailLeft"><a name="dynamic"></a>
+                            <div><span><img src="images/newJr/dynamic.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=dynamic'" target="_blank" class="moreA">更多</a></div></div></div>
+                            <div class="listBlock">
+                                <ul>
+                                    <li v-for="items in dynamic">
+                                        <div class="line"></div>
+                                        <div class="text"><a :href="detailUrl+'?type=dynamic&id=' +  items.id" target="_blank" class="linkA">{{items.title}}</a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="topTwoDetailRight"><a name="discuss"></a>
+                            <div><span><img src="images/newJr/discuss.png" class="titleImg"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=discuss'" target="_blank" class="moreA">更多</a></div></div></div>
+                            <div  class="listBlock">
+                                <ul>
+                                    <li v-for="items in discuss">
+                                        <div class="line"></div>
+                                        <div class="text"><a :href="detailUrl+'?type=discuss&id=' + items.id" target="_blank" class="linkA">{{items.title}}</a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middleTwo">
+                    <!--<div class="middleTwoHeader">-->
+                        <!--<img src="images/newJr/redTwo.png" style="height: 100%;width: 100%">-->
+                    <!--</div>-->
+                    <div class="middleTwDetailLeft"><a name="model"></a>
+                        <div><span><img src="images/newJr/model.png" class="titleImg" style="position: relative;width: 600px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=model'" target="_blank" class="moreA">更多</a></div></div>
+                        </div>
+                        <div class="peopleList">
+                            <ul>
+                                <li v-for="items in personImages" style="white-space:normal;overflow-scrolling: auto">
+                                    <div class="pic">
+                                        <a :href="detailUrl+'?type=model&id='+items.id" target="_blank"><img :src="fileUrl+items.pic"  style="width: 100%;height: 100%"></a>
+                                    </div>
+                                    <div class="tit">
+                                        <a :href="detailUrl+'?type=model&id='+items.id" style="color: white;text-decoration:none" target="_blank">{{items.title.split('&')[0]}}</a>
+                                    </div
+                                    ><div class="ab">
+                                    {{items.title.split('&')[1]}}
+                                </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="middleTwDetailRight"><a name="inspection"></a>
+                        <div><span><img src="images/newJr/inspection.png" class="titleImg" style="position: relative;width: 300px"></span><div class="more"><img src="images/newJr/right.png" style=""><div style=""><a :href="listUrl+'?type=inspection'" target="_blank" class="moreA">更多</a></div></div>
+                        </div>
+                        <div class="inspection">
+                            <ul>
+                                <li v-for="items in inspection"><a :href="detailUrl+'?type=inspection&id='+items.id" class="linkA" target="_blank">{{items.title}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
-
-        </div>
-        <div class="bottom">
-            <div class="bottomHeader">
-                <img src="images/newJr/redTwo.png" style="height: 100%;width: 100%">
+            <div class="bottom">
+                <div class="bottomHeader">
+                    <img src="images/newJr/redTwo.png" style="height: 100%;width: 100%">
+                </div>
             </div>
         </div>
         <div class="books">
-            <div class="booksHeader"><img src="images/newJr/studyPlatform.png" style="width: 100%"></div>
-            <div class="booksDetail">
-                <div class="swiper-containerTwo">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="items in bottomImgs">
-                            <a :href="items.url" target="_blank">
-                                <img :src="items.src" style="width: 99%">
-                                <p style="background-color: #ffffff;color: #555555;position: relative;top: -5px;height: 25px;">{{items.title}}</p>
-                            </a>
+            <div style="width: 1300px;margin: 0 auto;">
+                <div class="booksHeader"><img src="images/newJr/studyPlatform.png" style="width: 100%"></div>
+                <div class="booksDetail">
+                    <div class="swiper-containerTwo">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for="items in bottomImgs">
+                                <a :href="items.url" target="_blank">
+                                    <img :src="items.src" style="width: 99%">
+                                    <p style="background-color: #ffffff;color: #555555;position: relative;top: -5px;height: 25px;">{{items.title}}</p>
+                                </a>
+                            </div>
                         </div>
+                        <!-- 如果需要分页器 -->
+                        <!--<div class="swiper-pagination"></div>-->
+                        <!--<div class="swiper-button-prev"></div>-->
+                        <!--<div class="swiper-button-next"></div>-->
                     </div>
-                    <!-- 如果需要分页器 -->
-                    <!--<div class="swiper-pagination"></div>-->
-                    <!--<div class="swiper-button-prev"></div>-->
-                    <!--<div class="swiper-button-next"></div>-->
-                </div>
-                <!--<div v-for="items in bottomImgs" style="width: 300px;height: 250px;margin-left: 15px;display: inline-block;">-->
+                    <!--<div v-for="items in bottomImgs" style="width: 300px;height: 250px;margin-left: 15px;display: inline-block;">-->
                     <!--<img  :src="items" style="width: 100%;height: 100%;">-->
-                <!--</div>-->
+                    <!--</div>-->
+                </div>
             </div>
         </div>
         <div class="links">
             <div class="linksHeader"><img src="images/newJr/link.png" style="width: 100%"></div>
             <div class="linksDetail">
                 <div style="display: inline-block;cursor: pointer">
-                    <button class="linkBtn" @click="linkOpen('http://jsnews.jschina.com.cn/zt2019/chuxin/')">江苏省委“不忘初心，牢记使命”主题教育官方网站</button>
+                    <button class="linkBtn" @click="linkOpen('http://jsnews.jschina.com.cn/zt2019/chuxin/')">江苏省委“不忘初心，牢记使命”主题教育网站</button>
                 </div>
                 <div style="display: inline-block;cursor: pointer">
-                    <button class="linkBtn" @click="linkOpen('http://www.12371.cn/cxsm/')">中央“不忘初心，牢记使命”主题教育官方网站</button>
+                    <button class="linkBtn" @click="linkOpen('http://www.12371.cn/cxsm/')">中央“不忘初心，牢记使命”主题教育网站</button>
                 </div>
                 <div style="display: inline-block;cursor: pointer">
-                    <button class="linkBtn" @click="linkOpen('http://www.zjdj.gov.cn/Net/al?id=3380769717273600')">镇江市委“不忘初心，牢记使命”主题教育官方网站</button>
+                    <button class="linkBtn" @click="linkOpen('http://www.zjdj.gov.cn/Net/al?id=3380769717273600')">镇江市委“不忘初心，牢记使命”主题教育网站</button>
                 </div>
             </div>
         </div>

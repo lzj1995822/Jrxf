@@ -40,6 +40,7 @@ li:hover{
 .menu{
     margin-top: -3px;
     width:100%;
+    min-width: 1300px;
     line-height: 60px;
     vertical-align: middle;
     background: url("../images/newJr/menu.png") no-repeat;
@@ -50,15 +51,14 @@ li:hover{
     text-align: center;
 }
 .menuItems{
-    margin-left: 66px;
-    margin-right: 66px;
+    margin: 0 60px;
     cursor: pointer;
 }
 .active{
     color: #0a7ad7;
 }
 .topOne{
-    width: 68.5%;
+    width: 100%;
     margin: 20px auto;
 }
 .topOneLeft{
@@ -104,7 +104,7 @@ li:hover{
     color: red;
 }
 .topTwo{
-    width: 68.5%;
+    width: 100%;
     margin: 30px auto;
 }
 .topTwoHeader{
@@ -149,7 +149,7 @@ li:hover{
     display: inline-block;vertical-align: middle
 }
 .middle{
-    width: 68.5%;
+    width: 100%;
     margin: 0px auto
 }
 .middleTwo{
@@ -180,7 +180,7 @@ li:hover{
     vertical-align: top;
 }
 .bottom{
-    width: 68.5%;
+    width: 100%;
     margin: 20px auto;
 
 }
@@ -199,23 +199,25 @@ li:hover{
     position: relative;
     margin: 0px auto;
     top:35px;
-    width: 60%;
+    width: 100%;
     /*高度自定*/
 }
 .booksDetail{
     padding-bottom: 53px;
     overflow: hidden;
-    width: 70%;
+    width: 100%;
     margin: 65px auto;
     text-align: center;
 }
 .linksHeader{
     margin: 30px auto;
     /*高度自定*/
-    width: 60%;
+    width: 1300px;
 }
 .linksDetail{
     text-align: center;
+    width: 1500px;
+    margin: 0 auto;
 }
 .linkBtn{
     line-height: 26px;
@@ -307,6 +309,7 @@ a{
 }
 /*外链*/
 .links{
+    width: 100%;
     padding-bottom: 100px;
 }
 /*尾巴*/
