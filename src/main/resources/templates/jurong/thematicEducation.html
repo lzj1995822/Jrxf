@@ -80,7 +80,18 @@
             <div class="middle">
                 <div class="middleOne">
                     <div class="middleOneHeader">
-                        <img src="images/newJr/redOne.png" style="height: 100%;width: 100%">
+                        <div style="width: 100%; height: 62px;background: url('images/newJr/redOne.png') no-repeat; overflow: hidden;background-size: cover">
+                            <div class="swiper-container3">
+                                <div class="swiper-wrapper">
+                                    <p class="swiper-slide watchword-content">着力推进解放思想，确保理论学习有收获</p>
+                                    <p class="swiper-slide watchword-content">着力弘扬"铁军精神"，确保思想政治受洗礼</p>
+                                    <p class="swiper-slide watchword-content">着力坚守"四硬"标准，确保干事创业敢担当</p>
+                                    <p class="swiper-slide watchword-content">着力践行"亚夫精神"，确保为民服务解难题</p>
+                                    <p class="swiper-slide watchword-content">着力强化作风建设，确保清正廉洁作表率</p>
+                                </div>
+                            </div>
+                        </div>
+<!--                        <img src="images/newJr/redOne.png" style="height: 100%;width: 100%">-->
                     </div>
                     <div class="middleOnedetail">
                         <div class="topTwoDetailLeft"><a name="dynamic"></a>
@@ -143,11 +154,6 @@
                 </div>
 
             </div>
-            <div class="bottom">
-                <div class="bottomHeader">
-                    <img src="images/newJr/redTwo.png" style="height: 100%;width: 100%">
-                </div>
-            </div>
         </div>
         <div class="books">
             <div style="width: 1300px;margin: 0 auto;">
@@ -208,6 +214,17 @@
     }
     .swiper-pagination-bullet-active{
         background: rgba(255, 71, 56, 0.8);
+    }
+    .watchword-content {
+        display: block;
+        width: 100%;
+        height: 62px;
+        line-height: 62px;
+        color: #fbef34;
+        font-size: 26px;
+        font-family: 'STSong';
+        text-align: center;
+        letter-spacing: 12px;
     }
 </style>
 </body>
@@ -338,6 +355,15 @@ var main = new Vue({
             //     clickable:true
             // }
         })
+
+            var watchword = new Swiper ('.swiper-container3', {
+                direction: 'vertical', // 垂直切换选项
+                loop: true, // 循环模式选项
+                speed: 1100,
+                autoplay: {
+                    delay: 3000,//1秒切换一次
+                }
+            });
         });
     },
     created:function(){
