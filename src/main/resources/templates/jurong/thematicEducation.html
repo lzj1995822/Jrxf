@@ -301,38 +301,40 @@ var main = new Vue({
             }
         }).then(function(data){
             _this.topOneData = data.data.obj.data
-
-        var mySwiper = new Swiper ('.swiper-container', {
-            direction: 'horizontal', // 垂直切换选项
-            loop: false, // 循环模式选项
-            autoplay: {
-                delay: 3000,//1秒切换一次
-                disableOnInteraction: false,
-            },//
-            // 如果需要前进后退按钮
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // 如果需要分页器
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'custom',
-                clickable:true,
-                renderCustom: function (swiper, current, total) {
-                    var customPaginationHtml = "";
-                    for(var i = 0; i < total; i++) {
-                        //判断哪个分页器此刻应该被激活
-                        if(i == (current - 1)) {
-                            customPaginationHtml += '<span style="float: left;line-height: 44px;color: white;font-size: 19px;margin-left: 10px;width: 70%;text-overflow:ellipsis;white-space: nowrap;overflow: hidden;text-align: left">'+_this.topOneData[i].title+'</span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>';
-                        } else {
-                            customPaginationHtml += '<span class="swiper-pagination-bullet"></span>';
+            _this.$nextTick(function () {
+                var mySwiper = new Swiper ('.swiper-container', {
+                    direction: 'horizontal', // 垂直切换选项
+                    loop: true, // 循环模式选项
+                    autoplay: {
+                        delay: 3000,//1秒切换一次
+                        disableOnInteraction: false,
+                    },//
+                    // 如果需要前进后退按钮
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    // 如果需要分页器
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: 'custom',
+                        clickable:true,
+                        renderCustom: function (swiper, current, total) {
+                            var customPaginationHtml = "";
+                            for(var i = 0; i < total; i++) {
+                                //判断哪个分页器此刻应该被激活
+                                if(i == (current - 1)) {
+                                    customPaginationHtml += '<span style="float: left;line-height: 44px;color: white;font-size: 19px;margin-left: 10px;width: 70%;text-overflow:ellipsis;white-space: nowrap;overflow: hidden;text-align: left">'+_this.topOneData[i].title+'</span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>';
+                                } else {
+                                    customPaginationHtml += '<span class="swiper-pagination-bullet"></span>';
+                                }
+                            }
+                            return customPaginationHtml;
                         }
                     }
-                    return customPaginationHtml;
-                }
-            }
-        })
+                })
+
+            })
 
         var mySwiperTwo = new Swiper ('.swiper-containerTwo', {
             direction: 'horizontal', // 垂直切换选项
