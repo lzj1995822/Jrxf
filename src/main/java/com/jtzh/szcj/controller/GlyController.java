@@ -77,6 +77,9 @@ public class GlyController {
 							case "主题教育栏目管理":
 								url = "remember_mission.html";
 								break;
+							case "防疫栏目管理":
+								url = "epidemic_prevention.html";
+								break;
                         }
                         res.setObj(url);
                         return res;

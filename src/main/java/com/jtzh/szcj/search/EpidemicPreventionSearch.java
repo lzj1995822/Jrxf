@@ -4,7 +4,7 @@ import com.jtzh.szcj.common.page.Page;
 
 import java.io.Serializable;
 
-public class RememberMissionSearch implements Serializable {
+public class EpidemicPreventionSearch implements Serializable {
 
     private String title;
 
@@ -18,7 +18,7 @@ public class RememberMissionSearch implements Serializable {
 
     private Page page;
 
-    public RememberMissionSearch(String title, String pic, String content, String author, String type, Page page) {
+    public EpidemicPreventionSearch(String title, String pic, String content, String author, String type, Page page) {
         this.title = title;
         this.pic = pic;
         this.content = content;
@@ -27,7 +27,7 @@ public class RememberMissionSearch implements Serializable {
         this.page = page;
     }
 
-    public RememberMissionSearch(){}
+    public EpidemicPreventionSearch(){}
 
     public String getTitle() {
         return title;
